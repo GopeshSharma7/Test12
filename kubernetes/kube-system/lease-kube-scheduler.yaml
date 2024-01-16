@@ -10,4 +10,4 @@ spec:
   holderIdentity: sharmag-k8s-master-pnad30.englab.juniper.net_20aff8eb-2107-4c88-9fb8-90d361e961a6
   leaseDurationSeconds: 15
   leaseTransitions: 1
-  renewTime: "2024-01-16T09:30:47.035717Z"
+  renewTime: "2024-01-16T09:30:57.064235Z"
