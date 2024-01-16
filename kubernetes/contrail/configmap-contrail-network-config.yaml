@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  networkConfig: |
+    controlDataNetworks:
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: jcnr
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2023-12-27T09:47:46Z"
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: contrail-network-config
+  namespace: contrail
+  uid: db686f5c-a3ee-4fdb-9c3b-9552604d90a6

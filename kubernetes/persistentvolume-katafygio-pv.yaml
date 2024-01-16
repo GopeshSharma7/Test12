@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"PersistentVolume","metadata":{"annotations":{},"name":"katafygio-pv"},"spec":{"accessModes":["ReadWriteOnce"],"capacity":{"storage":"10Gi"},"hostPath":{"path":"/katafygio/data"}}}
+    pv.kubernetes.io/bound-by-controller: "yes"
+  creationTimestamp: "2024-01-16T06:58:24Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: katafygio-pv
+  uid: df1de3be-5021-4dbc-b0e7-f0b19d7b9c26
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: katafygio
+    namespace: default
+    resourceVersion: "2538823"
+    uid: 068329ff-3971-4a95-9524-89a16aae82e2
+  hostPath:
+    path: /katafygio/data
+    type: ""
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+status:
+  phase: Bound

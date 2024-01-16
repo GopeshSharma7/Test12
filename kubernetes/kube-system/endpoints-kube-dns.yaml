@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2024-01-15T18:12:07Z"
+  creationTimestamp: "2023-12-27T09:43:05Z"
+  labels:
+    k8s-app: kube-dns
+    kubernetes.io/cluster-service: "true"
+    kubernetes.io/name: CoreDNS
+  name: kube-dns
+  namespace: kube-system
+  uid: cf989fb1-51e3-4ec4-8449-6f3ca94f0768
+subsets:
+- addresses:
+  - ip: 10.244.100.204
+    nodeName: sharmag-k8s-master-pnad30.englab.juniper.net
+    targetRef:
+      kind: Pod
+      name: coredns-756994469c-d5xlj
+      namespace: kube-system
+      uid: 01eaa7b9-9806-4321-8173-3cd80a4e1f5c
+  - ip: 10.244.35.139
+    nodeName: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+    targetRef:
+      kind: Pod
+      name: coredns-756994469c-pxnkd
+      namespace: kube-system
+      uid: a5fa52ee-7a54-432c-9a48-cc69eda3eee5
+  ports:
+  - name: dns-tcp
+    port: 53
+    protocol: TCP
+  - name: dns
+    port: 53
+    protocol: UDP
+  - name: metrics
+    port: 9153
+    protocol: TCP
