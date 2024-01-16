@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-12-27T09:42:47Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system::leader-locking-kube-scheduler
+  namespace: kube-system
+  uid: c2564e80-bb89-4d8e-a50a-46a21db08fb3
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - watch
+- apiGroups:
+  - ""
+  resourceNames:
+  - kube-scheduler
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - update

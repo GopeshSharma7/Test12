@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-12-27T09:42:47Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: extension-apiserver-authentication-reader
+  namespace: kube-system
+  uid: 6a7beaa7-0f8d-4f4a-b053-cdbc3bb5cdca
+rules:
+- apiGroups:
+  - ""
+  resourceNames:
+  - extension-apiserver-authentication
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch

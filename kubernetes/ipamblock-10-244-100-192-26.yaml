@@ -1,0 +1,177 @@
+apiVersion: crd.projectcalico.org/v1
+kind: IPAMBlock
+metadata:
+  annotations:
+    projectcalico.org/metadata: '{"creationTimestamp":null}'
+  creationTimestamp: "2023-12-27T09:46:29Z"
+  name: 10-244-100-192-26
+  uid: 4b3d24c5-15ff-4257-863b-6f6b5f627e7a
+spec:
+  affinity: host:sharmag-k8s-master-pnad30.englab.juniper.net
+  allocations:
+  - 0
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - 1
+  - null
+  - null
+  - null
+  - null
+  - 2
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  attributes:
+  - handle_id: ipip-tunnel-addr-sharmag-k8s-master-pnad30.englab.juniper.net
+    secondary:
+      node: sharmag-k8s-master-pnad30.englab.juniper.net
+      type: ipipTunnelAddress
+  - handle_id: k8s-pod-network.369b8cf5712df16c2824b1e2b0eddcb8d6de99d270eaee2849abafe92351732b
+    secondary:
+      namespace: kube-system
+      node: sharmag-k8s-master-pnad30.englab.juniper.net
+      pod: coredns-756994469c-d5xlj
+      timestamp: 2024-01-15 18:12:06.894263088 +0000 UTC
+  - handle_id: k8s-pod-network.351bdcd4c7fde9014879e93915cb7fd9f1be7c4c233e65de7231442f19cd4b66
+    secondary:
+      namespace: default
+      node: sharmag-k8s-master-pnad30.englab.juniper.net
+      pod: katafygio-767758478c-8kbfj
+      timestamp: 2024-01-16 06:58:52.680114223 +0000 UTC
+  cidr: 10.244.100.192/26
+  deleted: false
+  sequenceNumber: 1703670389193232371
+  sequenceNumberForAllocation:
+    "0": 1703670389193232338
+    "1": 1703670389193232339
+    "2": 1703670389193232340
+    "3": 1703670389193232341
+    "4": 1703670389193232343
+    "5": 1703670389193232345
+    "6": 1703670389193232347
+    "7": 1703670389193232349
+    "8": 1703670389193232351
+    "9": 1703670389193232353
+    "10": 1703670389193232355
+    "11": 1703670389193232357
+    "12": 1703670389193232359
+    "13": 1703670389193232362
+    "14": 1703670389193232364
+    "15": 1703670389193232366
+    "16": 1703670389193232368
+    "17": 1703670389193232370
+  strictAffinity: false
+  unallocated:
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 1
+  - 2
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16

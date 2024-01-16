@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2023-12-27T09:47:45Z"
+  labels:
+    kubernetes.io/metadata.name: jcnr
+  name: jcnr
+  uid: 583af992-6e47-4021-9b23-c0595f95b786
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active

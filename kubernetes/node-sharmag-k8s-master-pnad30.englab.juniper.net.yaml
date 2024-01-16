@@ -1,0 +1,203 @@
+apiVersion: v1
+kind: Node
+metadata:
+  annotations:
+    jcnr.juniper.net/internal-params: '{"routerMac": "48:5A:0D:BA:25:CA"}'
+    kubeadm.alpha.kubernetes.io/cri-socket: unix:///var/run/crio/crio.sock
+    node.alpha.kubernetes.io/ttl: "0"
+    projectcalico.org/IPv4Address: 192.168.2.2/24
+    projectcalico.org/IPv4IPIPTunnelAddr: 10.244.100.192
+    volumes.kubernetes.io/controller-managed-attach-detach: "true"
+  creationTimestamp: "2023-12-27T09:42:46Z"
+  labels:
+    beta.kubernetes.io/arch: amd64
+    beta.kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
+    kubernetes.io/hostname: sharmag-k8s-master-pnad30.englab.juniper.net
+    kubernetes.io/os: linux
+    node: master
+    node-role.kubernetes.io/control-plane: ""
+    node-role.kubernetes.io/master: ""
+    node.kubernetes.io/exclude-from-external-load-balancers: ""
+  name: sharmag-k8s-master-pnad30.englab.juniper.net
+  uid: 5fa103b5-b7c3-42b7-9c5e-c499875d6f5f
+spec:
+  podCIDR: 10.244.0.0/24
+  podCIDRs:
+  - 10.244.0.0/24
+status:
+  addresses:
+  - address: 192.168.1.2
+    type: InternalIP
+  - address: sharmag-k8s-master-pnad30.englab.juniper.net
+    type: Hostname
+  allocatable:
+    cpu: "8"
+    ephemeral-storage: "74748089426"
+    hugepages-1Gi: 16Gi
+    hugepages-2Mi: "0"
+    memory: 48767508Ki
+    pods: "110"
+  capacity:
+    cpu: "8"
+    ephemeral-storage: 81106868Ki
+    hugepages-1Gi: 16Gi
+    hugepages-2Mi: "0"
+    memory: 65647124Ki
+    pods: "110"
+  conditions:
+  - lastHeartbeatTime: "2023-12-27T09:46:29Z"
+    lastTransitionTime: "2023-12-27T09:46:29Z"
+    message: Calico is running on this node
+    reason: CalicoIsUp
+    status: "False"
+    type: NetworkUnavailable
+  - lastHeartbeatTime: "2024-01-16T08:54:45Z"
+    lastTransitionTime: "2023-12-27T09:42:45Z"
+    message: kubelet has sufficient memory available
+    reason: KubeletHasSufficientMemory
+    status: "False"
+    type: MemoryPressure
+  - lastHeartbeatTime: "2024-01-16T08:54:45Z"
+    lastTransitionTime: "2023-12-27T09:42:45Z"
+    message: kubelet has no disk pressure
+    reason: KubeletHasNoDiskPressure
+    status: "False"
+    type: DiskPressure
+  - lastHeartbeatTime: "2024-01-16T08:54:45Z"
+    lastTransitionTime: "2023-12-27T09:42:45Z"
+    message: kubelet has sufficient PID available
+    reason: KubeletHasSufficientPID
+    status: "False"
+    type: PIDPressure
+  - lastHeartbeatTime: "2024-01-16T08:54:45Z"
+    lastTransitionTime: "2023-12-27T09:42:46Z"
+    message: kubelet is posting ready status. AppArmor enabled
+    reason: KubeletReady
+    status: "True"
+    type: Ready
+  daemonEndpoints:
+    kubeletEndpoint:
+      Port: 10250
+  images:
+  - names:
+    - svl-artifactory.juniper.net/junos-docker-local/warthog/amd64/crpd@sha256:90167d5f2eab78dcf01fa710b6ac97e6b542b07c5c4c8b6164a2e02d10c1d40b
+    - svl-artifactory.juniper.net/junos-docker-local/warthog/amd64/crpd:23.4R1.7
+    sizeBytes: 510773176
+  - names:
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-vrouter-agent@sha256:9701f3e190746b39c6349f1272cc4fbe41c20636c0c7162eca04bf3aea69132f
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-vrouter-agent:master
+    sizeBytes: 426721325
+  - names:
+    - ghcr.io/k8snetworkplumbingwg/multus-cni@sha256:66582fb04ecd00495942ccd5a36d194743935e4521c5605a5dc593c958a621a8
+    - ghcr.io/k8snetworkplumbingwg/multus-cni@sha256:9479537fe0827d23bc40056e98f8d1e75778ec294d89ae4d8a62f83dfc74a31d
+    - ghcr.io/k8snetworkplumbingwg/multus-cni:v3.8
+    sizeBytes: 300185078
+  - names:
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/etcd@sha256:b25975e634b3e466a2e06bcb285d465b5742c81d34e18c261db1458ec0870a89
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/etcd:3.5.9-0
+    sizeBytes: 295454476
+  - names:
+    - registry.englab.juniper.net/docker-remote/calico/node@sha256:5972ad2bcbdc668564d3e26960c9c513b2d7b05581c704747cf7c62ef3a405a6
+    - registry.englab.juniper.net/docker-remote/calico/node@sha256:5c614b62b13d6a45826ea3ff72022be6aef7637198f8c1c83c2d2d547206a4a0
+    - registry.englab.juniper.net/docker-remote/calico/node:v3.24.5
+    sizeBytes: 228673883
+  - names:
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-init@sha256:90f5d69463b73cc84df77fb6810d1609a96386250ba51a4f95fac0d8218558fe
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-init:master
+    sizeBytes: 210053190
+  - names:
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-vrouter-dpdk@sha256:a0ac6a9d7de233b6213bc3439c98749bac0021c3d9098a618c0348dacfbd0db5
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-vrouter-dpdk:master
+    sizeBytes: 198994014
+  - names:
+    - registry.englab.juniper.net/docker-remote/calico/cni@sha256:6d29e8402585431e5044ebddc70f19fe9c8a12d1f3651b12b7cd55407cbdebca
+    - registry.englab.juniper.net/docker-remote/calico/cni@sha256:e282ea2914c806b5de2976330a17cfb5e6dcef47147bceb1432ca5c75fd46f50
+    - registry.englab.juniper.net/docker-remote/calico/cni:v3.24.5
+    sizeBytes: 197561721
+  - names:
+    - svl-artifactory.juniper.net/junos-docker-local/warthog/amd64/crpdconfig-generator@sha256:27859999caca2d0355acf203c0d874f0c2dc5c6c4d75a2bab72bc033f2abe1bc
+    - svl-artifactory.juniper.net/junos-docker-local/warthog/amd64/crpdconfig-generator:v21
+    sizeBytes: 176055205
+  - names:
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-vrouter-kernel-init-dpdk@sha256:b68508552ae810cf3f59cdc898caafee7413c4c76a916f01cf6379ff5a07dc07
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-vrouter-kernel-init-dpdk:master
+    sizeBytes: 153845890
+  - names:
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/kube-apiserver@sha256:07ec0f29e172784b9fda870d63430a84befade590a2220c1fcce52f17cd24631
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/kube-apiserver:v1.28.2
+    sizeBytes: 127147645
+  - names:
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/kube-controller-manager@sha256:757a9c9d2f2329799490f9cec6c8ea12dfe4b6225051f6436f39d22a1def682e
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/kube-controller-manager:v1.28.2
+    sizeBytes: 123170275
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio@sha256:23e522daed8049173285c813610b697fd8cf731ff76ac49b0b4fd55e08f7954d
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio:h2
+    sizeBytes: 109869320
+  - names:
+    - svl-artifactory.juniper.net/contrail-docker/x86_64/syslog-ng@sha256:fb5713aa3659e2c6f9d2618006bc229cd0be4a2e2f87f680ef07700aeef293ee
+    - svl-artifactory.juniper.net/contrail-docker/x86_64/syslog-ng:v6
+    sizeBytes: 83985885
+  - names:
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/kube-proxy@sha256:3330e491169be46febd3f4e487924195f60c09f284bbda38cab7cbe71a51fded
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/kube-proxy:v1.28.2
+    sizeBytes: 74686536
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio@sha256:d16b80529fb3b357c972f0b470439f561c227fe5c0ea8b867c08e091bbdfc3f2
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio:h1
+    sizeBytes: 70413973
+  - names:
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-telemetry-exporter@sha256:1a3552e8fa2c35e7034b0a91813d71c3131c79812483e37484581f1b08439cdf
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-telemetry-exporter:master
+    sizeBytes: 70061292
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/katafygio@sha256:2001d4904868815412fe5b91ea0035845a63f50bc08c17aa6e8f1872a6189e80
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/katafygio:includekind15
+    sizeBytes: 69205638
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/katafygio@sha256:c354c3ce537803d6e2afc20d8da3b79b5809c53411fa7719e2dec1859192b92c
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/katafygio:rmvstatus
+    sizeBytes: 69189254
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/katafygio@sha256:2b00ba85494b5d426c3b83b60c071fdd1d819ff3707a00fd43634836b83bf6eb
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/katafygio:observerchange
+    sizeBytes: 69189254
+  - names:
+    - svl-artifactory.juniper.net/junos-docker-local/warthog/amd64/jcnr-cni@sha256:7681099e06a017b5da9a4c46e424ac5eb22d8bc57bc2b61289d0f5c3973dcaba
+    - svl-artifactory.juniper.net/junos-docker-local/warthog/amd64/jcnr-cni:master-20231221-e0f6d72
+    sizeBytes: 68874241
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio@sha256:6ffc686ec8f40d2f88ac143732bd5bdfb598b2a638e3b8772a16b08207e7efc2
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio:g1
+    sizeBytes: 68010645
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag/sharmag07/katafygio@sha256:69748b0046215d08603fca616505194032733edbd55a53ee0a0f7e9ee8ed1ebe
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio@sha256:69748b0046215d08603fca616505194032733edbd55a53ee0a0f7e9ee8ed1ebe
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/sharmag07/katafygio@sha256:69748b0046215d08603fca616505194032733edbd55a53ee0a0f7e9ee8ed1ebe
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag/sharmag07/katafygio:k1
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio:k1
+    sizeBytes: 66812053
+  - names:
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/kube-scheduler@sha256:8fc5b9b97128515266d5435273682ba36115d9ca1b68a5749e6f9a23927ef543
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/kube-scheduler:v1.28.2
+    sizeBytes: 61484515
+  - names:
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/coredns@sha256:be7652ce0b43b1339f3d14d9b14af9f588578011092c1f7893bd55432d83a378
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/coredns:v1.10.1
+    sizeBytes: 53619670
+  - names:
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/pause@sha256:0fc1f3b764be56f7c881a69cbd553ae25a2b5523c6901fbacb8270307c29d0c4
+    - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/pause:3.9
+    sizeBytes: 748009
+  nodeInfo:
+    architecture: amd64
+    bootID: e7b29079-311f-4f0f-9149-cdba120c7eb3
+    containerRuntimeVersion: cri-o://1.28.1
+    kernelVersion: 5.15.0-83-generic
+    kubeProxyVersion: v1.28.2
+    kubeletVersion: v1.28.2
+    machineID: eb4fe7e73bd84f649da3532c5d6314ab
+    operatingSystem: linux
+    osImage: Ubuntu 20.04.5 LTS
+    systemUUID: 5cb5fb19-131f-53d1-a605-e3b9452d668b
