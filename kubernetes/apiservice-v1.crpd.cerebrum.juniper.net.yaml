@@ -1,0 +1,20 @@
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  creationTimestamp: "2024-01-15T12:26:33Z"
+  labels:
+    kube-aggregator.kubernetes.io/automanaged: "true"
+  name: v1.crpd.cerebrum.juniper.net
+  uid: a89fa72b-bbf4-4f17-a930-063815252f34
+spec:
+  group: crpd.cerebrum.juniper.net
+  groupPriorityMinimum: 1000
+  version: v1
+  versionPriority: 100
+status:
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: Local APIServices are always available
+    reason: Local
+    status: "True"
+    type: Available

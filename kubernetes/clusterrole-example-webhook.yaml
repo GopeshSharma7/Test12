@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRole","metadata":{"annotations":{},"name":"example-webhook"},"rules":[{"apiGroups":["core.cerebrum.juniper.net","*"],"resources":["evpns","pods"],"verbs":["get","watch","list","create","update","delete"]}]}
+  creationTimestamp: "2024-01-15T12:15:46Z"
+  name: example-webhook
+  uid: e685e24d-209a-4eaf-bf99-404b34a768f7
+rules:
+- apiGroups:
+  - core.cerebrum.juniper.net
+  - '*'
+  resources:
+  - evpns
+  - pods
+  verbs:
+  - get
+  - watch
+  - list
+  - create
+  - update
+  - delete

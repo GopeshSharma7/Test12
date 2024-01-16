@@ -1,0 +1,608 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"vrrps.core.cerebrum.juniper.net"},"spec":{"group":"core.cerebrum.juniper.net","names":{"kind":"Vrrp","listKind":"VrrpList","plural":"vrrps","singular":"vrrp"},"scope":"Namespaced","versions":[{"name":"v1","schema":{"openAPIV3Schema":{"description":"Vrrp is the Schema for the vrrps API","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"VrrpSpec defines the desired state of Vrrp","properties":{"fastInterval":{"type":"integer"},"group":{"type":"integer"},"interfaceGroupParent":{"description":"ObjectReference contains enough information to let you inspect or modify the referred object. --- New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. 1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. 2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular restrictions like, \"must refer only to types A and B\" or \"UID not honored\" or \"name must be restricted\". Those cannot be well described when embedded. 3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. 4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple and the version of the actual struct is irrelevant. 5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control. \n Instead of using this type, create a locally provided and used type that is well-focused on your reference. For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"interfaceSelector":{"description":"InterfaceSelector","type":"string"},"priority":{"type":"integer"},"track":{"properties":{"interface":{"properties":{"interface":{"type":"string"},"weightCost":{"type":"integer"}},"type":"object"},"notifyBackup":{"type":"string"},"notifyMaster":{"type":"string"}},"type":"object"},"v4SubnetFilter":{"description":"CIDR representation (e.g. 192.168.1.1/24). Its public functions must not return other types than CIDR and IpAddr","type":"string"},"v6SubnetFilter":{"description":"CIDR representation (e.g. 192.168.1.1/24). Its public functions must not return other types than CIDR and IpAddr","type":"string"},"virtualAddress":{"properties":{"deviceName":{"type":"string"},"v4Address":{"properties":{"ipAddress":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"poolReference":{"description":"ObjectReference contains enough information to let you inspect or modify the referred object. --- New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. 1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. 2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular restrictions like, \"must refer only to types A and B\" or \"UID not honored\" or \"name must be restricted\". Those cannot be well described when embedded. 3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. 4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple and the version of the actual struct is irrelevant. 5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control. \n Instead of using this type, create a locally provided and used type that is well-focused on your reference. For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"}},"type":"object"},"v6Address":{"properties":{"ipAddress":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"poolReference":{"description":"ObjectReference contains enough information to let you inspect or modify the referred object. --- New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. 1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. 2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular restrictions like, \"must refer only to types A and B\" or \"UID not honored\" or \"name must be restricted\". Those cannot be well described when embedded. 3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. 4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple and the version of the actual struct is irrelevant. 5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control. \n Instead of using this type, create a locally provided and used type that is well-focused on your reference. For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"}},"type":"object"}},"type":"object"},"vrrpUnicast":{"properties":{"localV4Address":{"description":"IP no-mask","type":"string"},"localV6Address":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"peerV4Addresses":{"items":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"},"peerV6Addresses":{"items":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"}},"type":"object"}},"type":"object"},"status":{"description":"VrrpStatus defines the observed state of Vrrp","properties":{"vrrpSpec":{"description":"VrrpSpec defines the desired state of Vrrp","properties":{"fastInterval":{"type":"integer"},"group":{"type":"integer"},"interfaceGroupParent":{"description":"ObjectReference contains enough information to let you inspect or modify the referred object. --- New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. 1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. 2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular restrictions like, \"must refer only to types A and B\" or \"UID not honored\" or \"name must be restricted\". Those cannot be well described when embedded. 3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. 4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple and the version of the actual struct is irrelevant. 5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control. \n Instead of using this type, create a locally provided and used type that is well-focused on your reference. For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"interfaceSelector":{"description":"InterfaceSelector","type":"string"},"priority":{"type":"integer"},"track":{"properties":{"interface":{"properties":{"interface":{"type":"string"},"weightCost":{"type":"integer"}},"type":"object"},"notifyBackup":{"type":"string"},"notifyMaster":{"type":"string"}},"type":"object"},"v4SubnetFilter":{"description":"CIDR representation (e.g. 192.168.1.1/24). Its public functions must not return other types than CIDR and IpAddr","type":"string"},"v6SubnetFilter":{"description":"CIDR representation (e.g. 192.168.1.1/24). Its public functions must not return other types than CIDR and IpAddr","type":"string"},"virtualAddress":{"properties":{"deviceName":{"type":"string"},"v4Address":{"properties":{"ipAddress":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"poolReference":{"description":"ObjectReference contains enough information to let you inspect or modify the referred object. --- New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. 1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. 2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular restrictions like, \"must refer only to types A and B\" or \"UID not honored\" or \"name must be restricted\". Those cannot be well described when embedded. 3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. 4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple and the version of the actual struct is irrelevant. 5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control. \n Instead of using this type, create a locally provided and used type that is well-focused on your reference. For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"}},"type":"object"},"v6Address":{"properties":{"ipAddress":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"poolReference":{"description":"ObjectReference contains enough information to let you inspect or modify the referred object. --- New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. 1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. 2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular restrictions like, \"must refer only to types A and B\" or \"UID not honored\" or \"name must be restricted\". Those cannot be well described when embedded. 3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. 4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple and the version of the actual struct is irrelevant. 5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control. \n Instead of using this type, create a locally provided and used type that is well-focused on your reference. For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"}},"type":"object"}},"type":"object"},"vrrpUnicast":{"properties":{"localV4Address":{"description":"IP no-mask","type":"string"},"localV6Address":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"peerV4Addresses":{"items":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"},"peerV6Addresses":{"items":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"}},"type":"object"}},"type":"object"}},"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:34Z"
+  name: vrrps.core.cerebrum.juniper.net
+  uid: a03409e5-2db3-4cf2-ba60-1ce849885190
+spec:
+  conversion:
+    strategy: None
+  group: core.cerebrum.juniper.net
+  names:
+    kind: Vrrp
+    listKind: VrrpList
+    plural: vrrps
+    singular: vrrp
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Vrrp is the Schema for the vrrps API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: VrrpSpec defines the desired state of Vrrp
+            properties:
+              fastInterval:
+                type: integer
+              group:
+                type: integer
+              interfaceGroupParent:
+                description: "ObjectReference contains enough information to let you
+                  inspect or modify the referred object. --- New uses of this type
+                  are discouraged because of difficulty describing its usage when
+                  embedded in APIs. 1. Ignored fields.  It includes many fields which
+                  are not generally honored.  For instance, ResourceVersion and FieldPath
+                  are both very rarely valid in actual usage. 2. Invalid usage help.
+                  \ It is impossible to add specific help for individual usage.  In
+                  most embedded usages, there are particular restrictions like, \"must
+                  refer only to types A and B\" or \"UID not honored\" or \"name must
+                  be restricted\". Those cannot be well described when embedded. 3.
+                  Inconsistent validation.  Because the usages are different, the
+                  validation rules are different by usage, which makes it hard for
+                  users to predict what will happen. 4. The fields are both imprecise
+                  and overly precise.  Kind is not a precise mapping to a URL. This
+                  can produce ambiguity during interpretation and require a REST mapping.
+                  \ In most cases, the dependency is on the group,resource tuple and
+                  the version of the actual struct is irrelevant. 5. We cannot easily
+                  change it.  Because this type is embedded in many locations, updates
+                  to this type will affect numerous schemas.  Don't make new APIs
+                  embed an underspecified API type they do not control. \n Instead
+                  of using this type, create a locally provided and used type that
+                  is well-focused on your reference. For example, ServiceReferences
+                  for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
+                  ."
+                properties:
+                  apiVersion:
+                    description: API version of the referent.
+                    type: string
+                  fieldPath:
+                    description: 'If referring to a piece of an object instead of
+                      an entire object, this string should contain a valid JSON/Go
+                      field access statement, such as desiredState.manifest.containers[2].
+                      For example, if the object reference is to a container within
+                      a pod, this would take on a value like: "spec.containers{name}"
+                      (where "name" refers to the name of the container that triggered
+                      the event) or if no container name is specified "spec.containers[2]"
+                      (container with index 2 in this pod). This syntax is chosen
+                      only to have some well-defined way of referencing a part of
+                      an object. TODO: this design is not final and this field is
+                      subject to change in the future.'
+                    type: string
+                  kind:
+                    description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                    type: string
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                    type: string
+                  namespace:
+                    description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                    type: string
+                  resourceVersion:
+                    description: 'Specific resourceVersion to which this reference
+                      is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                    type: string
+                  uid:
+                    description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+              interfaceSelector:
+                description: InterfaceSelector
+                type: string
+              priority:
+                type: integer
+              track:
+                properties:
+                  interface:
+                    properties:
+                      interface:
+                        type: string
+                      weightCost:
+                        type: integer
+                    type: object
+                  notifyBackup:
+                    type: string
+                  notifyMaster:
+                    type: string
+                type: object
+              v4SubnetFilter:
+                description: CIDR representation (e.g. 192.168.1.1/24). Its public
+                  functions must not return other types than CIDR and IpAddr
+                type: string
+              v6SubnetFilter:
+                description: CIDR representation (e.g. 192.168.1.1/24). Its public
+                  functions must not return other types than CIDR and IpAddr
+                type: string
+              virtualAddress:
+                properties:
+                  deviceName:
+                    type: string
+                  v4Address:
+                    properties:
+                      ipAddress:
+                        description: IpAddr representation (e.g. 192.168.1.1) Its
+                          public functions must not return other types than CIDR and
+                          IpAddr
+                        type: string
+                      poolReference:
+                        description: "ObjectReference contains enough information
+                          to let you inspect or modify the referred object. --- New
+                          uses of this type are discouraged because of difficulty
+                          describing its usage when embedded in APIs. 1. Ignored fields.
+                          \ It includes many fields which are not generally honored.
+                          \ For instance, ResourceVersion and FieldPath are both very
+                          rarely valid in actual usage. 2. Invalid usage help.  It
+                          is impossible to add specific help for individual usage.
+                          \ In most embedded usages, there are particular restrictions
+                          like, \"must refer only to types A and B\" or \"UID not
+                          honored\" or \"name must be restricted\". Those cannot be
+                          well described when embedded. 3. Inconsistent validation.
+                          \ Because the usages are different, the validation rules
+                          are different by usage, which makes it hard for users to
+                          predict what will happen. 4. The fields are both imprecise
+                          and overly precise.  Kind is not a precise mapping to a
+                          URL. This can produce ambiguity during interpretation and
+                          require a REST mapping.  In most cases, the dependency is
+                          on the group,resource tuple and the version of the actual
+                          struct is irrelevant. 5. We cannot easily change it.  Because
+                          this type is embedded in many locations, updates to this
+                          type will affect numerous schemas.  Don't make new APIs
+                          embed an underspecified API type they do not control. \n
+                          Instead of using this type, create a locally provided and
+                          used type that is well-focused on your reference. For example,
+                          ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
+                          ."
+                        properties:
+                          apiVersion:
+                            description: API version of the referent.
+                            type: string
+                          fieldPath:
+                            description: 'If referring to a piece of an object instead
+                              of an entire object, this string should contain a valid
+                              JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                              For example, if the object reference is to a container
+                              within a pod, this would take on a value like: "spec.containers{name}"
+                              (where "name" refers to the name of the container that
+                              triggered the event) or if no container name is specified
+                              "spec.containers[2]" (container with index 2 in this
+                              pod). This syntax is chosen only to have some well-defined
+                              way of referencing a part of an object. TODO: this design
+                              is not final and this field is subject to change in
+                              the future.'
+                            type: string
+                          kind:
+                            description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                            type: string
+                          name:
+                            description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                            type: string
+                          namespace:
+                            description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                            type: string
+                          resourceVersion:
+                            description: 'Specific resourceVersion to which this reference
+                              is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                            type: string
+                          uid:
+                            description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                            type: string
+                        type: object
+                        x-kubernetes-map-type: atomic
+                    type: object
+                  v6Address:
+                    properties:
+                      ipAddress:
+                        description: IpAddr representation (e.g. 192.168.1.1) Its
+                          public functions must not return other types than CIDR and
+                          IpAddr
+                        type: string
+                      poolReference:
+                        description: "ObjectReference contains enough information
+                          to let you inspect or modify the referred object. --- New
+                          uses of this type are discouraged because of difficulty
+                          describing its usage when embedded in APIs. 1. Ignored fields.
+                          \ It includes many fields which are not generally honored.
+                          \ For instance, ResourceVersion and FieldPath are both very
+                          rarely valid in actual usage. 2. Invalid usage help.  It
+                          is impossible to add specific help for individual usage.
+                          \ In most embedded usages, there are particular restrictions
+                          like, \"must refer only to types A and B\" or \"UID not
+                          honored\" or \"name must be restricted\". Those cannot be
+                          well described when embedded. 3. Inconsistent validation.
+                          \ Because the usages are different, the validation rules
+                          are different by usage, which makes it hard for users to
+                          predict what will happen. 4. The fields are both imprecise
+                          and overly precise.  Kind is not a precise mapping to a
+                          URL. This can produce ambiguity during interpretation and
+                          require a REST mapping.  In most cases, the dependency is
+                          on the group,resource tuple and the version of the actual
+                          struct is irrelevant. 5. We cannot easily change it.  Because
+                          this type is embedded in many locations, updates to this
+                          type will affect numerous schemas.  Don't make new APIs
+                          embed an underspecified API type they do not control. \n
+                          Instead of using this type, create a locally provided and
+                          used type that is well-focused on your reference. For example,
+                          ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
+                          ."
+                        properties:
+                          apiVersion:
+                            description: API version of the referent.
+                            type: string
+                          fieldPath:
+                            description: 'If referring to a piece of an object instead
+                              of an entire object, this string should contain a valid
+                              JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                              For example, if the object reference is to a container
+                              within a pod, this would take on a value like: "spec.containers{name}"
+                              (where "name" refers to the name of the container that
+                              triggered the event) or if no container name is specified
+                              "spec.containers[2]" (container with index 2 in this
+                              pod). This syntax is chosen only to have some well-defined
+                              way of referencing a part of an object. TODO: this design
+                              is not final and this field is subject to change in
+                              the future.'
+                            type: string
+                          kind:
+                            description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                            type: string
+                          name:
+                            description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                            type: string
+                          namespace:
+                            description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                            type: string
+                          resourceVersion:
+                            description: 'Specific resourceVersion to which this reference
+                              is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                            type: string
+                          uid:
+                            description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                            type: string
+                        type: object
+                        x-kubernetes-map-type: atomic
+                    type: object
+                type: object
+              vrrpUnicast:
+                properties:
+                  localV4Address:
+                    description: IP no-mask
+                    type: string
+                  localV6Address:
+                    description: IpAddr representation (e.g. 192.168.1.1) Its public
+                      functions must not return other types than CIDR and IpAddr
+                    type: string
+                  peerV4Addresses:
+                    items:
+                      description: IpAddr representation (e.g. 192.168.1.1) Its public
+                        functions must not return other types than CIDR and IpAddr
+                      type: string
+                    type: array
+                  peerV6Addresses:
+                    items:
+                      description: IpAddr representation (e.g. 192.168.1.1) Its public
+                        functions must not return other types than CIDR and IpAddr
+                      type: string
+                    type: array
+                type: object
+            type: object
+          status:
+            description: VrrpStatus defines the observed state of Vrrp
+            properties:
+              vrrpSpec:
+                description: VrrpSpec defines the desired state of Vrrp
+                properties:
+                  fastInterval:
+                    type: integer
+                  group:
+                    type: integer
+                  interfaceGroupParent:
+                    description: "ObjectReference contains enough information to let
+                      you inspect or modify the referred object. --- New uses of this
+                      type are discouraged because of difficulty describing its usage
+                      when embedded in APIs. 1. Ignored fields.  It includes many
+                      fields which are not generally honored.  For instance, ResourceVersion
+                      and FieldPath are both very rarely valid in actual usage. 2.
+                      Invalid usage help.  It is impossible to add specific help for
+                      individual usage.  In most embedded usages, there are particular
+                      restrictions like, \"must refer only to types A and B\" or \"UID
+                      not honored\" or \"name must be restricted\". Those cannot be
+                      well described when embedded. 3. Inconsistent validation.  Because
+                      the usages are different, the validation rules are different
+                      by usage, which makes it hard for users to predict what will
+                      happen. 4. The fields are both imprecise and overly precise.
+                      \ Kind is not a precise mapping to a URL. This can produce ambiguity
+                      during interpretation and require a REST mapping.  In most cases,
+                      the dependency is on the group,resource tuple and the version
+                      of the actual struct is irrelevant. 5. We cannot easily change
+                      it.  Because this type is embedded in many locations, updates
+                      to this type will affect numerous schemas.  Don't make new APIs
+                      embed an underspecified API type they do not control. \n Instead
+                      of using this type, create a locally provided and used type
+                      that is well-focused on your reference. For example, ServiceReferences
+                      for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
+                      ."
+                    properties:
+                      apiVersion:
+                        description: API version of the referent.
+                        type: string
+                      fieldPath:
+                        description: 'If referring to a piece of an object instead
+                          of an entire object, this string should contain a valid
+                          JSON/Go field access statement, such as desiredState.manifest.containers[2].
+                          For example, if the object reference is to a container within
+                          a pod, this would take on a value like: "spec.containers{name}"
+                          (where "name" refers to the name of the container that triggered
+                          the event) or if no container name is specified "spec.containers[2]"
+                          (container with index 2 in this pod). This syntax is chosen
+                          only to have some well-defined way of referencing a part
+                          of an object. TODO: this design is not final and this field
+                          is subject to change in the future.'
+                        type: string
+                      kind:
+                        description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                        type: string
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                        type: string
+                      namespace:
+                        description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                        type: string
+                      resourceVersion:
+                        description: 'Specific resourceVersion to which this reference
+                          is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                        type: string
+                      uid:
+                        description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                        type: string
+                    type: object
+                    x-kubernetes-map-type: atomic
+                  interfaceSelector:
+                    description: InterfaceSelector
+                    type: string
+                  priority:
+                    type: integer
+                  track:
+                    properties:
+                      interface:
+                        properties:
+                          interface:
+                            type: string
+                          weightCost:
+                            type: integer
+                        type: object
+                      notifyBackup:
+                        type: string
+                      notifyMaster:
+                        type: string
+                    type: object
+                  v4SubnetFilter:
+                    description: CIDR representation (e.g. 192.168.1.1/24). Its public
+                      functions must not return other types than CIDR and IpAddr
+                    type: string
+                  v6SubnetFilter:
+                    description: CIDR representation (e.g. 192.168.1.1/24). Its public
+                      functions must not return other types than CIDR and IpAddr
+                    type: string
+                  virtualAddress:
+                    properties:
+                      deviceName:
+                        type: string
+                      v4Address:
+                        properties:
+                          ipAddress:
+                            description: IpAddr representation (e.g. 192.168.1.1)
+                              Its public functions must not return other types than
+                              CIDR and IpAddr
+                            type: string
+                          poolReference:
+                            description: "ObjectReference contains enough information
+                              to let you inspect or modify the referred object. ---
+                              New uses of this type are discouraged because of difficulty
+                              describing its usage when embedded in APIs. 1. Ignored
+                              fields.  It includes many fields which are not generally
+                              honored.  For instance, ResourceVersion and FieldPath
+                              are both very rarely valid in actual usage. 2. Invalid
+                              usage help.  It is impossible to add specific help for
+                              individual usage.  In most embedded usages, there are
+                              particular restrictions like, \"must refer only to types
+                              A and B\" or \"UID not honored\" or \"name must be restricted\".
+                              Those cannot be well described when embedded. 3. Inconsistent
+                              validation.  Because the usages are different, the validation
+                              rules are different by usage, which makes it hard for
+                              users to predict what will happen. 4. The fields are
+                              both imprecise and overly precise.  Kind is not a precise
+                              mapping to a URL. This can produce ambiguity during
+                              interpretation and require a REST mapping.  In most
+                              cases, the dependency is on the group,resource tuple
+                              and the version of the actual struct is irrelevant.
+                              5. We cannot easily change it.  Because this type is
+                              embedded in many locations, updates to this type will
+                              affect numerous schemas.  Don't make new APIs embed
+                              an underspecified API type they do not control. \n Instead
+                              of using this type, create a locally provided and used
+                              type that is well-focused on your reference. For example,
+                              ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
+                              ."
+                            properties:
+                              apiVersion:
+                                description: API version of the referent.
+                                type: string
+                              fieldPath:
+                                description: 'If referring to a piece of an object
+                                  instead of an entire object, this string should
+                                  contain a valid JSON/Go field access statement,
+                                  such as desiredState.manifest.containers[2]. For
+                                  example, if the object reference is to a container
+                                  within a pod, this would take on a value like: "spec.containers{name}"
+                                  (where "name" refers to the name of the container
+                                  that triggered the event) or if no container name
+                                  is specified "spec.containers[2]" (container with
+                                  index 2 in this pod). This syntax is chosen only
+                                  to have some well-defined way of referencing a part
+                                  of an object. TODO: this design is not final and
+                                  this field is subject to change in the future.'
+                                type: string
+                              kind:
+                                description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                                type: string
+                              name:
+                                description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                                type: string
+                              namespace:
+                                description: 'Namespace of the referent. More info:
+                                  https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                                type: string
+                              resourceVersion:
+                                description: 'Specific resourceVersion to which this
+                                  reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                                type: string
+                              uid:
+                                description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                                type: string
+                            type: object
+                            x-kubernetes-map-type: atomic
+                        type: object
+                      v6Address:
+                        properties:
+                          ipAddress:
+                            description: IpAddr representation (e.g. 192.168.1.1)
+                              Its public functions must not return other types than
+                              CIDR and IpAddr
+                            type: string
+                          poolReference:
+                            description: "ObjectReference contains enough information
+                              to let you inspect or modify the referred object. ---
+                              New uses of this type are discouraged because of difficulty
+                              describing its usage when embedded in APIs. 1. Ignored
+                              fields.  It includes many fields which are not generally
+                              honored.  For instance, ResourceVersion and FieldPath
+                              are both very rarely valid in actual usage. 2. Invalid
+                              usage help.  It is impossible to add specific help for
+                              individual usage.  In most embedded usages, there are
+                              particular restrictions like, \"must refer only to types
+                              A and B\" or \"UID not honored\" or \"name must be restricted\".
+                              Those cannot be well described when embedded. 3. Inconsistent
+                              validation.  Because the usages are different, the validation
+                              rules are different by usage, which makes it hard for
+                              users to predict what will happen. 4. The fields are
+                              both imprecise and overly precise.  Kind is not a precise
+                              mapping to a URL. This can produce ambiguity during
+                              interpretation and require a REST mapping.  In most
+                              cases, the dependency is on the group,resource tuple
+                              and the version of the actual struct is irrelevant.
+                              5. We cannot easily change it.  Because this type is
+                              embedded in many locations, updates to this type will
+                              affect numerous schemas.  Don't make new APIs embed
+                              an underspecified API type they do not control. \n Instead
+                              of using this type, create a locally provided and used
+                              type that is well-focused on your reference. For example,
+                              ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533
+                              ."
+                            properties:
+                              apiVersion:
+                                description: API version of the referent.
+                                type: string
+                              fieldPath:
+                                description: 'If referring to a piece of an object
+                                  instead of an entire object, this string should
+                                  contain a valid JSON/Go field access statement,
+                                  such as desiredState.manifest.containers[2]. For
+                                  example, if the object reference is to a container
+                                  within a pod, this would take on a value like: "spec.containers{name}"
+                                  (where "name" refers to the name of the container
+                                  that triggered the event) or if no container name
+                                  is specified "spec.containers[2]" (container with
+                                  index 2 in this pod). This syntax is chosen only
+                                  to have some well-defined way of referencing a part
+                                  of an object. TODO: this design is not final and
+                                  this field is subject to change in the future.'
+                                type: string
+                              kind:
+                                description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                                type: string
+                              name:
+                                description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                                type: string
+                              namespace:
+                                description: 'Namespace of the referent. More info:
+                                  https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                                type: string
+                              resourceVersion:
+                                description: 'Specific resourceVersion to which this
+                                  reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                                type: string
+                              uid:
+                                description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                                type: string
+                            type: object
+                            x-kubernetes-map-type: atomic
+                        type: object
+                    type: object
+                  vrrpUnicast:
+                    properties:
+                      localV4Address:
+                        description: IP no-mask
+                        type: string
+                      localV6Address:
+                        description: IpAddr representation (e.g. 192.168.1.1) Its
+                          public functions must not return other types than CIDR and
+                          IpAddr
+                        type: string
+                      peerV4Addresses:
+                        items:
+                          description: IpAddr representation (e.g. 192.168.1.1) Its
+                            public functions must not return other types than CIDR
+                            and IpAddr
+                          type: string
+                        type: array
+                      peerV6Addresses:
+                        items:
+                          description: IpAddr representation (e.g. 192.168.1.1) Its
+                            public functions must not return other types than CIDR
+                            and IpAddr
+                          type: string
+                        type: array
+                    type: object
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: Vrrp
+    listKind: VrrpList
+    plural: vrrps
+    singular: vrrp
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1

@@ -1,0 +1,153 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: CERTIFICATE_NAMESPACE/CERTIFICATE_NAME
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"cert-manager.io/inject-ca-from":"CERTIFICATE_NAMESPACE/CERTIFICATE_NAME","controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"crpdgroups.crpd.cerebrum.juniper.net"},"spec":{"conversion":{"strategy":"Webhook","webhook":{"clientConfig":{"service":{"name":"webhook-service","namespace":"system","path":"/convert"}},"conversionReviewVersions":["v1"]}},"group":"crpd.cerebrum.juniper.net","names":{"kind":"CrpdGroup","listKind":"CrpdGroupList","plural":"crpdgroups","singular":"crpdgroup"},"scope":"Namespaced","versions":[{"name":"v1","schema":{"openAPIV3Schema":{"description":"CrpdGroup is the Schema for the crpdgroups API","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"CrpdGroupSpec defines the desired state of CrpdGroup","properties":{"crpdTemplate":{"description":"CRPDTemplate is the spec that the CRPDs of this group will inherit. It has the same fields as the CRPDSpec.","properties":{"image":{"description":"Image","type":"string"},"initImage":{"description":"Init container Image","type":"string"},"interfaces":{"description":"List of interface regex. An interface group is created for every matching interface. All other interfaces are ignored.","items":{"type":"string"},"type":"array"},"nodeSelector":{"additionalProperties":{"type":"string"},"description":"NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/","type":"object","x-kubernetes-map-type":"atomic"},"vrouter":{"description":"Vrouter configuration","properties":{"dpdkUioDriver":{"default":"uio_pci_generic","description":"DPDK: uio_driver.","type":"string"},"imageRepository":{"description":"Image Repository","type":"string"},"imageTag":{"description":"Image Tag","type":"string"}},"type":"object"}},"type":"object"},"replicas":{"description":"Replicas controls the number of CRPD instances that will be created within this group.","format":"int32","type":"integer"}},"type":"object"},"status":{"description":"CrpdGroupStatus defines the observed state of CrpdGroup","properties":{"bgpRouterGroupReferences":{"description":"References to the BGPRouterGroups created for this crpd group TODO: @pcherukupall: Do we need this to be a list? Is it more sensible to have just one BGPRouterGroup reference?","items":{"description":"LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"type":"array"},"crpdReferences":{"description":"References to the CRPDs created for this group","items":{"description":"LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"type":"array"}},"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:33Z"
+  name: crpdgroups.crpd.cerebrum.juniper.net
+  uid: 1630c44f-445b-4770-a9c8-04698d423319
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      clientConfig:
+        service:
+          name: webhook-service
+          namespace: system
+          path: /convert
+          port: 443
+      conversionReviewVersions:
+      - v1
+  group: crpd.cerebrum.juniper.net
+  names:
+    kind: CrpdGroup
+    listKind: CrpdGroupList
+    plural: crpdgroups
+    singular: crpdgroup
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: CrpdGroup is the Schema for the crpdgroups API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: CrpdGroupSpec defines the desired state of CrpdGroup
+            properties:
+              crpdTemplate:
+                description: CRPDTemplate is the spec that the CRPDs of this group
+                  will inherit. It has the same fields as the CRPDSpec.
+                properties:
+                  image:
+                    description: Image
+                    type: string
+                  initImage:
+                    description: Init container Image
+                    type: string
+                  interfaces:
+                    description: List of interface regex. An interface group is created
+                      for every matching interface. All other interfaces are ignored.
+                    items:
+                      type: string
+                    type: array
+                  nodeSelector:
+                    additionalProperties:
+                      type: string
+                    description: 'NodeSelector is a selector which must be true for
+                      the pod to fit on a node. Selector which must match a node''s
+                      labels for the pod to be scheduled on that node. More info:
+                      https://kubernetes.io/docs/concepts/configuration/assign-pod-node/'
+                    type: object
+                    x-kubernetes-map-type: atomic
+                  vrouter:
+                    description: Vrouter configuration
+                    properties:
+                      dpdkUioDriver:
+                        default: uio_pci_generic
+                        description: 'DPDK: uio_driver.'
+                        type: string
+                      imageRepository:
+                        description: Image Repository
+                        type: string
+                      imageTag:
+                        description: Image Tag
+                        type: string
+                    type: object
+                type: object
+              replicas:
+                description: Replicas controls the number of CRPD instances that will
+                  be created within this group.
+                format: int32
+                type: integer
+            type: object
+          status:
+            description: CrpdGroupStatus defines the observed state of CrpdGroup
+            properties:
+              bgpRouterGroupReferences:
+                description: 'References to the BGPRouterGroups created for this crpd
+                  group TODO: @pcherukupall: Do we need this to be a list? Is it more
+                  sensible to have just one BGPRouterGroup reference?'
+                items:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                  x-kubernetes-map-type: atomic
+                type: array
+              crpdReferences:
+                description: References to the CRPDs created for this group
+                items:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                  x-kubernetes-map-type: atomic
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: CrpdGroup
+    listKind: CrpdGroupList
+    plural: crpdgroups
+    singular: crpdgroup
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1

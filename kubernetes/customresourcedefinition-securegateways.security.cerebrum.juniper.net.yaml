@@ -1,0 +1,143 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"securegateways.security.cerebrum.juniper.net"},"spec":{"group":"security.cerebrum.juniper.net","names":{"kind":"SecureGateway","listKind":"SecureGatewayList","plural":"securegateways","singular":"securegateway"},"scope":"Namespaced","versions":[{"additionalPrinterColumns":[{"jsonPath":".status.state","name":"State","type":"string"},{"jsonPath":".metadata.creationTimestamp","name":"Age","type":"date"}],"name":"v1","schema":{"openAPIV3Schema":{"description":"SecureGateway is the Schema for the securegateways API","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"SecureGatewaySpec defines the desired state of SecureGateway","properties":{"serviceChainType":{"description":"ServiceChainType","type":"string"},"services":{"description":"Services","items":{"properties":{"config":{"description":"config for the service","properties":{"authenticationAlgorithm":{"type":"string"},"encryptionAlgorithm":{"type":"string"},"trafficSelectorLocalIps":{"items":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"},"trafficSelectorRemoteIps":{"items":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"}},"type":"object"},"networks":{"description":"list of networks which are part of the service","items":{"properties":{"ipv4Address":{"description":"Ipv4Address of the Network","type":"string"},"ipv4Gateway":{"description":"Ipv6Address of the Network","type":"string"},"name":{"description":"Name of the Network","type":"string"},"routeDistinguisher":{"description":"RouteDistinguisher distinguishes one set of routes from another.","type":"string"}},"type":"object"},"type":"array"},"type":{"description":"Defines the type of service","type":"string"}},"type":"object"},"type":"array"}},"type":"object"},"status":{"description":"SecureGatewayStatus defines the observed state of SecureGateway","properties":{"observation":{"description":"Observation provides additional information related to the state of the resource. For example, if a reconciliation error occurs, Observation will contain a brief description of the problem.","type":"string"},"state":{"description":"State describe the current readiness of a resource after the last reconciliation. The possible states include Pending, Success, and Failure.","type":"string"}},"required":["observation","state"],"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:34Z"
+  name: securegateways.security.cerebrum.juniper.net
+  uid: f7d9f25c-80ed-45b4-9f99-7ffb7ef18300
+spec:
+  conversion:
+    strategy: None
+  group: security.cerebrum.juniper.net
+  names:
+    kind: SecureGateway
+    listKind: SecureGatewayList
+    plural: securegateways
+    singular: securegateway
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.state
+      name: State
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: SecureGateway is the Schema for the securegateways API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: SecureGatewaySpec defines the desired state of SecureGateway
+            properties:
+              serviceChainType:
+                description: ServiceChainType
+                type: string
+              services:
+                description: Services
+                items:
+                  properties:
+                    config:
+                      description: config for the service
+                      properties:
+                        authenticationAlgorithm:
+                          type: string
+                        encryptionAlgorithm:
+                          type: string
+                        trafficSelectorLocalIps:
+                          items:
+                            description: IpAddr representation (e.g. 192.168.1.1)
+                              Its public functions must not return other types than
+                              CIDR and IpAddr
+                            type: string
+                          type: array
+                        trafficSelectorRemoteIps:
+                          items:
+                            description: IpAddr representation (e.g. 192.168.1.1)
+                              Its public functions must not return other types than
+                              CIDR and IpAddr
+                            type: string
+                          type: array
+                      type: object
+                    networks:
+                      description: list of networks which are part of the service
+                      items:
+                        properties:
+                          ipv4Address:
+                            description: Ipv4Address of the Network
+                            type: string
+                          ipv4Gateway:
+                            description: Ipv6Address of the Network
+                            type: string
+                          name:
+                            description: Name of the Network
+                            type: string
+                          routeDistinguisher:
+                            description: RouteDistinguisher distinguishes one set
+                              of routes from another.
+                            type: string
+                        type: object
+                      type: array
+                    type:
+                      description: Defines the type of service
+                      type: string
+                  type: object
+                type: array
+            type: object
+          status:
+            description: SecureGatewayStatus defines the observed state of SecureGateway
+            properties:
+              observation:
+                description: Observation provides additional information related to
+                  the state of the resource. For example, if a reconciliation error
+                  occurs, Observation will contain a brief description of the problem.
+                type: string
+              state:
+                description: State describe the current readiness of a resource after
+                  the last reconciliation. The possible states include Pending, Success,
+                  and Failure.
+                type: string
+            required:
+            - observation
+            - state
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: SecureGateway
+    listKind: SecureGatewayList
+    plural: securegateways
+    singular: securegateway
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1

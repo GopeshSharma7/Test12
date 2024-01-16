@@ -1,0 +1,145 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: CERTIFICATE_NAMESPACE/CERTIFICATE_NAME
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"cert-manager.io/inject-ca-from":"CERTIFICATE_NAMESPACE/CERTIFICATE_NAME","controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"pools.core.cerebrum.juniper.net"},"spec":{"conversion":{"strategy":"Webhook","webhook":{"clientConfig":{"service":{"name":"webhook-service","namespace":"system","path":"/convert"}},"conversionReviewVersions":["v1"]}},"group":"core.cerebrum.juniper.net","names":{"kind":"Pool","listKind":"PoolList","plural":"pools","singular":"pool"},"scope":"Namespaced","versions":[{"name":"v1","schema":{"openAPIV3Schema":{"description":"Pool is the Schema for the pools API","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"properties":{"asn":{"description":"ASN range. ASN is a 32-bit number used to identify an Autonomous System.","properties":{"end":{"description":"End of the range.","format":"int32","maximum":4294967295,"minimum":1,"type":"integer"},"start":{"description":"Start of the range.","format":"int32","maximum":4294967295,"minimum":1,"type":"integer"}},"required":["end","start"],"type":"object"},"routeTarget":{"properties":{"size":{"format":"int32","type":"integer"},"start":{"format":"int32","type":"integer"}},"type":"object"},"v4":{"description":"A v4 prefix is an Ipv4 address with prefix length","type":"string"},"v6":{"description":"A v6 prefix is an Ipv6 address with prefix length","type":"string"},"vxlanId":{"description":"VxLAN identifier range. VxLAN identifier is a 24-bit number used to identify VxLAN segments.","properties":{"end":{"description":"End of the range.","format":"int32","maximum":16777215,"minimum":4096,"type":"integer"},"start":{"description":"Start of the range.","format":"int32","maximum":16777215,"minimum":4096,"type":"integer"}},"required":["end","start"],"type":"object"}},"type":"object"},"status":{"description":"PoolStatus defines the observed state of Pool","properties":{"allocations":{"additionalProperties":{"type":"boolean"},"type":"object"},"inUse":{"description":"Addresses in use","type":"string"},"length":{"type":"integer"},"maxSize":{"type":"string"}},"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:33Z"
+  name: pools.core.cerebrum.juniper.net
+  uid: cdc5271d-0758-4fad-899c-28441e3e8b19
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      clientConfig:
+        service:
+          name: webhook-service
+          namespace: system
+          path: /convert
+          port: 443
+      conversionReviewVersions:
+      - v1
+  group: core.cerebrum.juniper.net
+  names:
+    kind: Pool
+    listKind: PoolList
+    plural: pools
+    singular: pool
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Pool is the Schema for the pools API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              asn:
+                description: ASN range. ASN is a 32-bit number used to identify an
+                  Autonomous System.
+                properties:
+                  end:
+                    description: End of the range.
+                    format: int32
+                    maximum: 4294967295
+                    minimum: 1
+                    type: integer
+                  start:
+                    description: Start of the range.
+                    format: int32
+                    maximum: 4294967295
+                    minimum: 1
+                    type: integer
+                required:
+                - end
+                - start
+                type: object
+              routeTarget:
+                properties:
+                  size:
+                    format: int32
+                    type: integer
+                  start:
+                    format: int32
+                    type: integer
+                type: object
+              v4:
+                description: A v4 prefix is an Ipv4 address with prefix length
+                type: string
+              v6:
+                description: A v6 prefix is an Ipv6 address with prefix length
+                type: string
+              vxlanId:
+                description: VxLAN identifier range. VxLAN identifier is a 24-bit
+                  number used to identify VxLAN segments.
+                properties:
+                  end:
+                    description: End of the range.
+                    format: int32
+                    maximum: 16777215
+                    minimum: 4096
+                    type: integer
+                  start:
+                    description: Start of the range.
+                    format: int32
+                    maximum: 16777215
+                    minimum: 4096
+                    type: integer
+                required:
+                - end
+                - start
+                type: object
+            type: object
+          status:
+            description: PoolStatus defines the observed state of Pool
+            properties:
+              allocations:
+                additionalProperties:
+                  type: boolean
+                type: object
+              inUse:
+                description: Addresses in use
+                type: string
+              length:
+                type: integer
+              maxSize:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: Pool
+    listKind: PoolList
+    plural: pools
+    singular: pool
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1

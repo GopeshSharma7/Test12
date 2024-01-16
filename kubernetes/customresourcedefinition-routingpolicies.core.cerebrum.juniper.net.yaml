@@ -1,0 +1,260 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"routingpolicies.core.cerebrum.juniper.net"},"spec":{"group":"core.cerebrum.juniper.net","names":{"kind":"RoutingPolicy","listKind":"RoutingPolicyList","plural":"routingpolicies","singular":"routingpolicy"},"scope":"Namespaced","versions":[{"name":"v1","schema":{"openAPIV3Schema":{"description":"RoutingPolicy is the Schema for the routingpolicies API","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"RoutingPolicySpec defines the desired state of RoutingPolicy","properties":{"default":{"description":"Default Actions to take","properties":{"accept":{"description":"Leave nil if nothing has to be done. Set to true to accept a route. Set to false to reject a route.","type":"boolean"},"communityActions":{"description":"BGP community properties associated with a route","items":{"properties":{"action":{"description":"Action to take on a BGP community","enum":["add","delete","set"],"type":"string"},"name":{"description":"Name to identify a BGP community","type":"string"}},"type":"object"},"type":"array"},"load-balance":{"description":"Type of load balancing in forwarding table","enum":["per-packet","per-flow"],"type":"string"},"metric":{"description":"Metric value for a route","format":"int32","type":"integer"},"next":{"description":"Skip to next policy or term","enum":["policy","term"],"type":"string"}},"type":"object"},"terms":{"description":"Policy terms","items":{"properties":{"from":{"description":"Conditions to match the source of a route","properties":{"communities":{"description":"BGP Community","items":{"properties":{"members":{"description":"Community members Example: target:1000:1000, 64815:45155 etc","items":{"type":"string"},"type":"array"},"name":{"description":"Name to identify BGP community","type":"string"}},"type":"object"},"type":"array"},"conditions":{"description":"Conditions to match on A condition checks if a route exists in a specific routing table","items":{"properties":{"address":{"description":"Exact address of the route","type":"string"},"name":{"description":"Name of the condition","type":"string"},"table":{"description":"Routing table in which route should exist","type":"string"}},"type":"object"},"type":"array"},"family":{"description":"Family of a route","enum":["inet","inet6"],"type":"string"},"prefixListFilters":{"description":"List of prefix-list-filters to match","items":{"properties":{"matchType":{"description":"Type of match","enum":["exact"],"type":"string"},"name":{"description":"Name of prefix-list of routes to match","type":"string"}},"type":"object"},"type":"array"},"prefixLists":{"description":"List of prefix-lists of routes to match. A PrefixList defines a named set of address prefixes","items":{"properties":{"name":{"description":"Name of prefix-list of routes to match","type":"string"},"prefixes":{"description":"Address Prefixes","items":{"description":"CIDR representation (e.g. 192.168.1.1/24). Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"}},"type":"object"},"type":"array"},"protocol":{"description":"Protocol from which route was learned","enum":["bgp","direct","evpn"],"type":"string"},"routeFilter":{"description":"List of routes to match","items":{"properties":{"address":{"description":"IP address","type":"string"},"matchType":{"description":"Type of match","enum":["exact"],"type":"string"}},"type":"object"},"type":"array"}},"type":"object"},"name":{"description":"Name to identify a term","type":"string"},"then":{"description":"Actions to take if 'from' and 'to' conditions match","properties":{"accept":{"description":"Leave nil if nothing has to be done. Set to true to accept a route. Set to false to reject a route.","type":"boolean"},"communityActions":{"description":"BGP community properties associated with a route","items":{"properties":{"action":{"description":"Action to take on a BGP community","enum":["add","delete","set"],"type":"string"},"name":{"description":"Name to identify a BGP community","type":"string"}},"type":"object"},"type":"array"},"load-balance":{"description":"Type of load balancing in forwarding table","enum":["per-packet","per-flow"],"type":"string"},"metric":{"description":"Metric value for a route","format":"int32","type":"integer"},"next":{"description":"Skip to next policy or term","enum":["policy","term"],"type":"string"}},"type":"object"},"to":{"description":"Conditions to match the destination of a route","properties":{"rib":{"description":"Routing table","type":"string"}},"type":"object"}},"type":"object"},"type":"array"}},"type":"object"},"status":{"description":"RoutingPolicyStatus defines the observed state of RoutingPolicy","type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:34Z"
+  name: routingpolicies.core.cerebrum.juniper.net
+  uid: b0d62e61-ebf6-4e82-9767-561df8cf1786
+spec:
+  conversion:
+    strategy: None
+  group: core.cerebrum.juniper.net
+  names:
+    kind: RoutingPolicy
+    listKind: RoutingPolicyList
+    plural: routingpolicies
+    singular: routingpolicy
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: RoutingPolicy is the Schema for the routingpolicies API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: RoutingPolicySpec defines the desired state of RoutingPolicy
+            properties:
+              default:
+                description: Default Actions to take
+                properties:
+                  accept:
+                    description: Leave nil if nothing has to be done. Set to true
+                      to accept a route. Set to false to reject a route.
+                    type: boolean
+                  communityActions:
+                    description: BGP community properties associated with a route
+                    items:
+                      properties:
+                        action:
+                          description: Action to take on a BGP community
+                          enum:
+                          - add
+                          - delete
+                          - set
+                          type: string
+                        name:
+                          description: Name to identify a BGP community
+                          type: string
+                      type: object
+                    type: array
+                  load-balance:
+                    description: Type of load balancing in forwarding table
+                    enum:
+                    - per-packet
+                    - per-flow
+                    type: string
+                  metric:
+                    description: Metric value for a route
+                    format: int32
+                    type: integer
+                  next:
+                    description: Skip to next policy or term
+                    enum:
+                    - policy
+                    - term
+                    type: string
+                type: object
+              terms:
+                description: Policy terms
+                items:
+                  properties:
+                    from:
+                      description: Conditions to match the source of a route
+                      properties:
+                        communities:
+                          description: BGP Community
+                          items:
+                            properties:
+                              members:
+                                description: 'Community members Example: target:1000:1000,
+                                  64815:45155 etc'
+                                items:
+                                  type: string
+                                type: array
+                              name:
+                                description: Name to identify BGP community
+                                type: string
+                            type: object
+                          type: array
+                        conditions:
+                          description: Conditions to match on A condition checks if
+                            a route exists in a specific routing table
+                          items:
+                            properties:
+                              address:
+                                description: Exact address of the route
+                                type: string
+                              name:
+                                description: Name of the condition
+                                type: string
+                              table:
+                                description: Routing table in which route should exist
+                                type: string
+                            type: object
+                          type: array
+                        family:
+                          description: Family of a route
+                          enum:
+                          - inet
+                          - inet6
+                          type: string
+                        prefixListFilters:
+                          description: List of prefix-list-filters to match
+                          items:
+                            properties:
+                              matchType:
+                                description: Type of match
+                                enum:
+                                - exact
+                                type: string
+                              name:
+                                description: Name of prefix-list of routes to match
+                                type: string
+                            type: object
+                          type: array
+                        prefixLists:
+                          description: List of prefix-lists of routes to match. A
+                            PrefixList defines a named set of address prefixes
+                          items:
+                            properties:
+                              name:
+                                description: Name of prefix-list of routes to match
+                                type: string
+                              prefixes:
+                                description: Address Prefixes
+                                items:
+                                  description: CIDR representation (e.g. 192.168.1.1/24).
+                                    Its public functions must not return other types
+                                    than CIDR and IpAddr
+                                  type: string
+                                type: array
+                            type: object
+                          type: array
+                        protocol:
+                          description: Protocol from which route was learned
+                          enum:
+                          - bgp
+                          - direct
+                          - evpn
+                          type: string
+                        routeFilter:
+                          description: List of routes to match
+                          items:
+                            properties:
+                              address:
+                                description: IP address
+                                type: string
+                              matchType:
+                                description: Type of match
+                                enum:
+                                - exact
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    name:
+                      description: Name to identify a term
+                      type: string
+                    then:
+                      description: Actions to take if 'from' and 'to' conditions match
+                      properties:
+                        accept:
+                          description: Leave nil if nothing has to be done. Set to
+                            true to accept a route. Set to false to reject a route.
+                          type: boolean
+                        communityActions:
+                          description: BGP community properties associated with a
+                            route
+                          items:
+                            properties:
+                              action:
+                                description: Action to take on a BGP community
+                                enum:
+                                - add
+                                - delete
+                                - set
+                                type: string
+                              name:
+                                description: Name to identify a BGP community
+                                type: string
+                            type: object
+                          type: array
+                        load-balance:
+                          description: Type of load balancing in forwarding table
+                          enum:
+                          - per-packet
+                          - per-flow
+                          type: string
+                        metric:
+                          description: Metric value for a route
+                          format: int32
+                          type: integer
+                        next:
+                          description: Skip to next policy or term
+                          enum:
+                          - policy
+                          - term
+                          type: string
+                      type: object
+                    to:
+                      description: Conditions to match the destination of a route
+                      properties:
+                        rib:
+                          description: Routing table
+                          type: string
+                      type: object
+                  type: object
+                type: array
+            type: object
+          status:
+            description: RoutingPolicyStatus defines the observed state of RoutingPolicy
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: RoutingPolicy
+    listKind: RoutingPolicyList
+    plural: routingpolicies
+    singular: routingpolicy
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1

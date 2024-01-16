@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2024-01-15T12:15:53Z"
+  labels:
+    app: example-webhook
+    pod-template-hash: 66f6b79986
+  name: example-webhook-66f6b79986
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: example-webhook
+    uid: 0db81a07-6e4c-4e86-a8c5-62ab60c786f3
+  uid: ecf196b7-5d8a-46a3-9159-66693542d2ec
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-webhook
+      pod-template-hash: 66f6b79986
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: example-webhook
+        pod-template-hash: 66f6b79986
+    spec:
+      containers:
+      - image: svl-artifactory.juniper.net/atom-docker/cn2/jetstack/trohit7/muatatewebhook:v25
+        imagePullPolicy: IfNotPresent
+        name: server
+        ports:
+        - containerPort: 8443
+          name: tls
+          protocol: TCP
+        - containerPort: 80
+          name: metrics
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/webhook/certs/
+          name: webhook-tls-certs
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/os: linux
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1234
+      serviceAccount: example-webhook
+      serviceAccountName: example-webhook
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: webhook-tls-certs
+        secret:
+          defaultMode: 420
+          secretName: example-webhook-tls
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1

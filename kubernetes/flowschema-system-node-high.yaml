@@ -1,0 +1,46 @@
+apiVersion: flowcontrol.apiserver.k8s.io/v1beta2
+kind: FlowSchema
+metadata:
+  annotations:
+    apf.kubernetes.io/autoupdate-spec: "true"
+  creationTimestamp: "2023-12-27T09:42:46Z"
+  name: system-node-high
+  uid: 6ee9312f-53ed-4c4b-b647-496c0ce084a7
+spec:
+  distinguisherMethod:
+    type: ByUser
+  matchingPrecedence: 400
+  priorityLevelConfiguration:
+    name: node-high
+  rules:
+  - resourceRules:
+    - apiGroups:
+      - ""
+      clusterScope: true
+      namespaces:
+      - '*'
+      resources:
+      - nodes
+      - nodes/status
+      verbs:
+      - '*'
+    - apiGroups:
+      - coordination.k8s.io
+      namespaces:
+      - '*'
+      resources:
+      - leases
+      verbs:
+      - '*'
+    subjects:
+    - group:
+        name: system:nodes
+      kind: Group
+status:
+  conditions:
+  - lastTransitionTime: "2023-12-27T09:42:46Z"
+    message: This FlowSchema references the PriorityLevelConfiguration object named
+      "node-high" and it exists
+    reason: Found
+    status: "False"
+    type: Dangling

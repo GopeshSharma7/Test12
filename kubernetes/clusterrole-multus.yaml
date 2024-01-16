@@ -1,0 +1,30 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: "2023-12-27T09:47:05Z"
+  name: multus
+  uid: 3dd8f947-12df-4886-8811-cd04fea02f71
+rules:
+- apiGroups:
+  - k8s.cni.cncf.io
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - pods/status
+  verbs:
+  - get
+  - update
+- apiGroups:
+  - ""
+  - events.k8s.io
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+  - update

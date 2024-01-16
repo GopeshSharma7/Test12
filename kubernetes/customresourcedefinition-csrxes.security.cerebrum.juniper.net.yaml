@@ -1,0 +1,189 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"csrxes.security.cerebrum.juniper.net"},"spec":{"group":"security.cerebrum.juniper.net","names":{"kind":"Csrx","listKind":"CsrxList","plural":"csrxes","singular":"csrx"},"scope":"Namespaced","versions":[{"name":"v1","schema":{"openAPIV3Schema":{"description":"Csrx is the Schema for the csrxes API","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"CsrxSpec defines the desired state of Csrx","properties":{"image":{"description":"Csrx deployment image","type":"string"},"interfaces":{"description":"List of interface regex. An interface group is created for every matching interface. All other interfaces are ignored.","items":{"type":"string"},"type":"array"},"replicas":{"description":"Replicas controls the number of Csrx instances that will be created","format":"int32","type":"integer"}},"type":"object"},"status":{"description":"CsrxStatus defines the observed state of Csrx","properties":{"csrxDeploymentStatus":{"description":"The status of the statefulset set created for this CRPD instance","properties":{"availableReplicas":{"description":"Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.","format":"int32","type":"integer"},"collisionCount":{"description":"Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.","format":"int32","type":"integer"},"conditions":{"description":"Represents the latest available observations of a deployment's current state.","items":{"description":"DeploymentCondition describes the state of a deployment at a certain point.","properties":{"lastTransitionTime":{"description":"Last time the condition transitioned from one status to another.","format":"date-time","type":"string"},"lastUpdateTime":{"description":"The last time this condition was updated.","format":"date-time","type":"string"},"message":{"description":"A human readable message indicating details about the transition.","type":"string"},"reason":{"description":"The reason for the condition's last transition.","type":"string"},"status":{"description":"Status of the condition, one of True, False, Unknown.","type":"string"},"type":{"description":"Type of deployment condition.","type":"string"}},"required":["status","type"],"type":"object"},"type":"array"},"observedGeneration":{"description":"The generation observed by the deployment controller.","format":"int64","type":"integer"},"readyReplicas":{"description":"readyReplicas is the number of pods targeted by this Deployment with a Ready Condition.","format":"int32","type":"integer"},"replicas":{"description":"Total number of non-terminated pods targeted by this deployment (their labels match the selector).","format":"int32","type":"integer"},"unavailableReplicas":{"description":"Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.","format":"int32","type":"integer"},"updatedReplicas":{"description":"Total number of non-terminated pods targeted by this deployment that have the desired template spec.","format":"int32","type":"integer"}},"type":"object"},"interfaces":{"additionalProperties":{"description":"CsrxNadInterface is an interface used for Csrx Pod bringup","properties":{"mac":{"type":"string"},"v4Address":{"description":"CIDR representation (e.g. 192.168.1.1/24). Its public functions must not return other types than CIDR and IpAddr","type":"string"},"v6Address":{"description":"CIDR representation (e.g. 192.168.1.1/24). Its public functions must not return other types than CIDR and IpAddr","type":"string"}},"type":"object"},"description":"A map of interface name and details of the interface","type":"object"},"podIPs":{"description":"PodIPs is copied from Pod status","items":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"}},"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:33Z"
+  name: csrxes.security.cerebrum.juniper.net
+  uid: 713286da-de63-4557-b9eb-9172a71ec53d
+spec:
+  conversion:
+    strategy: None
+  group: security.cerebrum.juniper.net
+  names:
+    kind: Csrx
+    listKind: CsrxList
+    plural: csrxes
+    singular: csrx
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Csrx is the Schema for the csrxes API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: CsrxSpec defines the desired state of Csrx
+            properties:
+              image:
+                description: Csrx deployment image
+                type: string
+              interfaces:
+                description: List of interface regex. An interface group is created
+                  for every matching interface. All other interfaces are ignored.
+                items:
+                  type: string
+                type: array
+              replicas:
+                description: Replicas controls the number of Csrx instances that will
+                  be created
+                format: int32
+                type: integer
+            type: object
+          status:
+            description: CsrxStatus defines the observed state of Csrx
+            properties:
+              csrxDeploymentStatus:
+                description: The status of the statefulset set created for this CRPD
+                  instance
+                properties:
+                  availableReplicas:
+                    description: Total number of available pods (ready for at least
+                      minReadySeconds) targeted by this deployment.
+                    format: int32
+                    type: integer
+                  collisionCount:
+                    description: Count of hash collisions for the Deployment. The
+                      Deployment controller uses this field as a collision avoidance
+                      mechanism when it needs to create the name for the newest ReplicaSet.
+                    format: int32
+                    type: integer
+                  conditions:
+                    description: Represents the latest available observations of a
+                      deployment's current state.
+                    items:
+                      description: DeploymentCondition describes the state of a deployment
+                        at a certain point.
+                      properties:
+                        lastTransitionTime:
+                          description: Last time the condition transitioned from one
+                            status to another.
+                          format: date-time
+                          type: string
+                        lastUpdateTime:
+                          description: The last time this condition was updated.
+                          format: date-time
+                          type: string
+                        message:
+                          description: A human readable message indicating details
+                            about the transition.
+                          type: string
+                        reason:
+                          description: The reason for the condition's last transition.
+                          type: string
+                        status:
+                          description: Status of the condition, one of True, False,
+                            Unknown.
+                          type: string
+                        type:
+                          description: Type of deployment condition.
+                          type: string
+                      required:
+                      - status
+                      - type
+                      type: object
+                    type: array
+                  observedGeneration:
+                    description: The generation observed by the deployment controller.
+                    format: int64
+                    type: integer
+                  readyReplicas:
+                    description: readyReplicas is the number of pods targeted by this
+                      Deployment with a Ready Condition.
+                    format: int32
+                    type: integer
+                  replicas:
+                    description: Total number of non-terminated pods targeted by this
+                      deployment (their labels match the selector).
+                    format: int32
+                    type: integer
+                  unavailableReplicas:
+                    description: Total number of unavailable pods targeted by this
+                      deployment. This is the total number of pods that are still
+                      required for the deployment to have 100% available capacity.
+                      They may either be pods that are running but not yet available
+                      or pods that still have not been created.
+                    format: int32
+                    type: integer
+                  updatedReplicas:
+                    description: Total number of non-terminated pods targeted by this
+                      deployment that have the desired template spec.
+                    format: int32
+                    type: integer
+                type: object
+              interfaces:
+                additionalProperties:
+                  description: CsrxNadInterface is an interface used for Csrx Pod
+                    bringup
+                  properties:
+                    mac:
+                      type: string
+                    v4Address:
+                      description: CIDR representation (e.g. 192.168.1.1/24). Its
+                        public functions must not return other types than CIDR and
+                        IpAddr
+                      type: string
+                    v6Address:
+                      description: CIDR representation (e.g. 192.168.1.1/24). Its
+                        public functions must not return other types than CIDR and
+                        IpAddr
+                      type: string
+                  type: object
+                description: A map of interface name and details of the interface
+                type: object
+              podIPs:
+                description: PodIPs is copied from Pod status
+                items:
+                  description: IpAddr representation (e.g. 192.168.1.1) Its public
+                    functions must not return other types than CIDR and IpAddr
+                  type: string
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: Csrx
+    listKind: CsrxList
+    plural: csrxes
+    singular: csrx
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1

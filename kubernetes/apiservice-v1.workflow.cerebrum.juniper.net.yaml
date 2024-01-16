@@ -1,0 +1,20 @@
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  creationTimestamp: "2024-01-15T12:26:34Z"
+  labels:
+    kube-aggregator.kubernetes.io/automanaged: "true"
+  name: v1.workflow.cerebrum.juniper.net
+  uid: 6acfde78-3e61-472d-9afd-df5e74e9bb36
+spec:
+  group: workflow.cerebrum.juniper.net
+  groupPriorityMinimum: 1000
+  version: v1
+  versionPriority: 100
+status:
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: Local APIServices are always available
+    reason: Local
+    status: "True"
+    type: Available

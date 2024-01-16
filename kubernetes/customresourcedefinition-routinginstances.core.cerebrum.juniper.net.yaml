@@ -1,0 +1,260 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: CERTIFICATE_NAMESPACE/CERTIFICATE_NAME
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"cert-manager.io/inject-ca-from":"CERTIFICATE_NAMESPACE/CERTIFICATE_NAME","controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"routinginstances.core.cerebrum.juniper.net"},"spec":{"conversion":{"strategy":"Webhook","webhook":{"clientConfig":{"service":{"name":"webhook-service","namespace":"system","path":"/convert"}},"conversionReviewVersions":["v1"]}},"group":"core.cerebrum.juniper.net","names":{"kind":"RoutingInstance","listKind":"RoutingInstanceList","plural":"routinginstances","shortNames":["ri"],"singular":"routinginstance"},"scope":"Namespaced","versions":[{"additionalPrinterColumns":[{"jsonPath":".status.defaultRouteTargetReference.name","name":"RouteTarget","type":"string"}],"name":"v1","schema":{"openAPIV3Schema":{"description":"RoutingInstance is the Schema for the routinginstances API -copilot","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"RoutingInstanceSpec defines the desired state of RoutingInstance","properties":{"crpdGroupReference":{"description":"Reference to the CRPDGroup this RI belongs to","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"exportRoutingPolicies":{"description":"Virtual Routing and Forwarding (VRF) target community. This value is a route target extended community. Exports Routes with the specified Route Target community","items":{"description":"LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"type":"array"},"importRoutingPolicies":{"description":"Virtual Routing and Forwarding (VRF) target community. This value is a route target extended community. Imports Routes with the specified Route Target community","items":{"description":"LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"type":"array"},"instanceType":{"description":"Type of the RoutingInstance to be created","enum":["vrf","evpn-vpws","mac-vrf","virtual-router","virtual-switch"],"type":"string"},"interfaces":{"description":"Names of the Interfaces to be added to this RoutingInstance","items":{"type":"string"},"type":"array"},"routingOptions":{"description":"ObjectReference of RoutingOptions resource to be configured in the RoutingInstance","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"vrfTableLabel":{"description":"All the routes in a VRF routing instance are advertised with one label allocated per VRF A label switched interface (LSI) is created and mapped to this VRF routing instance. Routes in the VRF routing table are advertised with the LSI logical interface label allocated for this VRF","type":"boolean"},"vrfTarget":{"description":"Virtual Routing and Forwarding (VRF) target community. This value is a route target extended community. Routes with the specified Route Target community are both imported and exported","properties":{"export":{"description":"Target community to export","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"import":{"description":"Target community to import","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"importExport":{"description":"Reference to the RouteTarget resource to import and export","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"}},"type":"object"}},"required":["instanceType"],"type":"object"},"status":{"description":"RoutingInstanceStatus defines the observed state of RoutingInstance","properties":{"defaultRouteTargetReference":{"description":"Default RouteTarget reference Is Imported and Exported by default","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"}},"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:34Z"
+  name: routinginstances.core.cerebrum.juniper.net
+  uid: d31680c8-06d5-48b4-b885-ba8ca3c920d5
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      clientConfig:
+        service:
+          name: webhook-service
+          namespace: system
+          path: /convert
+          port: 443
+      conversionReviewVersions:
+      - v1
+  group: core.cerebrum.juniper.net
+  names:
+    kind: RoutingInstance
+    listKind: RoutingInstanceList
+    plural: routinginstances
+    shortNames:
+    - ri
+    singular: routinginstance
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.defaultRouteTargetReference.name
+      name: RouteTarget
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: RoutingInstance is the Schema for the routinginstances API -copilot
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: RoutingInstanceSpec defines the desired state of RoutingInstance
+            properties:
+              crpdGroupReference:
+                description: Reference to the CRPDGroup this RI belongs to
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+              exportRoutingPolicies:
+                description: Virtual Routing and Forwarding (VRF) target community.
+                  This value is a route target extended community. Exports Routes
+                  with the specified Route Target community
+                items:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                  x-kubernetes-map-type: atomic
+                type: array
+              importRoutingPolicies:
+                description: Virtual Routing and Forwarding (VRF) target community.
+                  This value is a route target extended community. Imports Routes
+                  with the specified Route Target community
+                items:
+                  description: LocalObjectReference contains enough information to
+                    let you locate the referenced object inside the same namespace.
+                  properties:
+                    name:
+                      description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                        TODO: Add other useful fields. apiVersion, kind, uid?'
+                      type: string
+                  type: object
+                  x-kubernetes-map-type: atomic
+                type: array
+              instanceType:
+                description: Type of the RoutingInstance to be created
+                enum:
+                - vrf
+                - evpn-vpws
+                - mac-vrf
+                - virtual-router
+                - virtual-switch
+                type: string
+              interfaces:
+                description: Names of the Interfaces to be added to this RoutingInstance
+                items:
+                  type: string
+                type: array
+              routingOptions:
+                description: ObjectReference of RoutingOptions resource to be configured
+                  in the RoutingInstance
+                properties:
+                  apiVersion:
+                    description: API version of the referent.
+                    type: string
+                  fieldPath:
+                    description: 'If referring to a piece of an object instead of
+                      an entire object, this string should contain a valid JSON/Go
+                      field access statement, such as desiredState.manifest.containers[2].
+                      For example, if the object reference is to a container within
+                      a pod, this would take on a value like: "spec.containers{name}"
+                      (where "name" refers to the name of the container that triggered
+                      the event) or if no container name is specified "spec.containers[2]"
+                      (container with index 2 in this pod). This syntax is chosen
+                      only to have some well-defined way of referencing a part of
+                      an object. TODO: this design is not final and this field is
+                      subject to change in the future.'
+                    type: string
+                  kind:
+                    description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                    type: string
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                    type: string
+                  namespace:
+                    description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                    type: string
+                  resourceVersion:
+                    description: 'Specific resourceVersion to which this reference
+                      is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                    type: string
+                  uid:
+                    description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+              vrfTableLabel:
+                description: All the routes in a VRF routing instance are advertised
+                  with one label allocated per VRF A label switched interface (LSI)
+                  is created and mapped to this VRF routing instance. Routes in the
+                  VRF routing table are advertised with the LSI logical interface
+                  label allocated for this VRF
+                type: boolean
+              vrfTarget:
+                description: Virtual Routing and Forwarding (VRF) target community.
+                  This value is a route target extended community. Routes with the
+                  specified Route Target community are both imported and exported
+                properties:
+                  export:
+                    description: Target community to export
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                    x-kubernetes-map-type: atomic
+                  import:
+                    description: Target community to import
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                    x-kubernetes-map-type: atomic
+                  importExport:
+                    description: Reference to the RouteTarget resource to import and
+                      export
+                    properties:
+                      name:
+                        description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?'
+                        type: string
+                    type: object
+                    x-kubernetes-map-type: atomic
+                type: object
+            required:
+            - instanceType
+            type: object
+          status:
+            description: RoutingInstanceStatus defines the observed state of RoutingInstance
+            properties:
+              defaultRouteTargetReference:
+                description: Default RouteTarget reference Is Imported and Exported
+                  by default
+                properties:
+                  apiVersion:
+                    description: API version of the referent.
+                    type: string
+                  fieldPath:
+                    description: 'If referring to a piece of an object instead of
+                      an entire object, this string should contain a valid JSON/Go
+                      field access statement, such as desiredState.manifest.containers[2].
+                      For example, if the object reference is to a container within
+                      a pod, this would take on a value like: "spec.containers{name}"
+                      (where "name" refers to the name of the container that triggered
+                      the event) or if no container name is specified "spec.containers[2]"
+                      (container with index 2 in this pod). This syntax is chosen
+                      only to have some well-defined way of referencing a part of
+                      an object. TODO: this design is not final and this field is
+                      subject to change in the future.'
+                    type: string
+                  kind:
+                    description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                    type: string
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                    type: string
+                  namespace:
+                    description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                    type: string
+                  resourceVersion:
+                    description: 'Specific resourceVersion to which this reference
+                      is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                    type: string
+                  uid:
+                    description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: RoutingInstance
+    listKind: RoutingInstanceList
+    plural: routinginstances
+    shortNames:
+    - ri
+    singular: routinginstance
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:34Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1

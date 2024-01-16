@@ -1,0 +1,229 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: CERTIFICATE_NAMESPACE/CERTIFICATE_NAME
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"cert-manager.io/inject-ca-from":"CERTIFICATE_NAMESPACE/CERTIFICATE_NAME","controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"crpds.crpd.cerebrum.juniper.net"},"spec":{"conversion":{"strategy":"Webhook","webhook":{"clientConfig":{"service":{"name":"webhook-service","namespace":"system","path":"/convert"}},"conversionReviewVersions":["v1"]}},"group":"crpd.cerebrum.juniper.net","names":{"kind":"Crpd","listKind":"CrpdList","plural":"crpds","singular":"crpd"},"scope":"Namespaced","versions":[{"name":"v1","schema":{"openAPIV3Schema":{"description":"Crpd is the Schema for the crpds API","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"CrpdSpec defines the desired state of Crpd","properties":{"image":{"description":"Image","type":"string"},"initImage":{"description":"Init container Image","type":"string"},"interfaces":{"description":"List of interface regex. An interface group is created for every matching interface. All other interfaces are ignored.","items":{"type":"string"},"type":"array"},"nodeSelector":{"additionalProperties":{"type":"string"},"description":"NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/","type":"object","x-kubernetes-map-type":"atomic"},"vrouter":{"description":"Vrouter configuration","properties":{"dpdkUioDriver":{"default":"uio_pci_generic","description":"DPDK: uio_driver.","type":"string"},"imageRepository":{"description":"Image Repository","type":"string"},"imageTag":{"description":"Image Tag","type":"string"}},"type":"object"}},"type":"object"},"status":{"description":"CrpdStatus defines the observed state of Crpd","properties":{"interfaces":{"additionalProperties":{"properties":{"discovered":{"description":"Discovered is set to true if this interface is discovered by the init container","type":"boolean"},"mac":{"description":"Mac is the MAC address of the interface","type":"string"},"v4Address":{"description":"V4Address is the IPv4 address of the interface","type":"string"},"v6Address":{"description":"V6Address is the IPv6 address of the interface","type":"string"}},"type":"object"},"description":"A map of interface name and details of the interface","type":"object"},"nodeName":{"description":"Node where this pod is scheduled","type":"string"},"podIPs":{"description":"PodIPs is copied from Pod status","items":{"description":"IpAddr representation (e.g. 192.168.1.1) Its public functions must not return other types than CIDR and IpAddr","type":"string"},"type":"array"},"statefulSet":{"description":"The status of the statefulset set created for this CRPD instance","properties":{"availableReplicas":{"description":"Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset.","format":"int32","type":"integer"},"collisionCount":{"description":"collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.","format":"int32","type":"integer"},"conditions":{"description":"Represents the latest available observations of a statefulset's current state.","items":{"description":"StatefulSetCondition describes the state of a statefulset at a certain point.","properties":{"lastTransitionTime":{"description":"Last time the condition transitioned from one status to another.","format":"date-time","type":"string"},"message":{"description":"A human readable message indicating details about the transition.","type":"string"},"reason":{"description":"The reason for the condition's last transition.","type":"string"},"status":{"description":"Status of the condition, one of True, False, Unknown.","type":"string"},"type":{"description":"Type of statefulset condition.","type":"string"}},"required":["status","type"],"type":"object"},"type":"array"},"currentReplicas":{"description":"currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.","format":"int32","type":"integer"},"currentRevision":{"description":"currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).","type":"string"},"observedGeneration":{"description":"observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.","format":"int64","type":"integer"},"readyReplicas":{"description":"readyReplicas is the number of pods created for this StatefulSet with a Ready Condition.","format":"int32","type":"integer"},"replicas":{"description":"replicas is the number of Pods created by the StatefulSet controller.","format":"int32","type":"integer"},"updateRevision":{"description":"updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)","type":"string"},"updatedReplicas":{"description":"updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.","format":"int32","type":"integer"}},"required":["replicas"],"type":"object"}},"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:33Z"
+  name: crpds.crpd.cerebrum.juniper.net
+  uid: 5c5e3bc9-6b4a-44d7-9bb0-3b5783f7160c
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      clientConfig:
+        service:
+          name: webhook-service
+          namespace: system
+          path: /convert
+          port: 443
+      conversionReviewVersions:
+      - v1
+  group: crpd.cerebrum.juniper.net
+  names:
+    kind: Crpd
+    listKind: CrpdList
+    plural: crpds
+    singular: crpd
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Crpd is the Schema for the crpds API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: CrpdSpec defines the desired state of Crpd
+            properties:
+              image:
+                description: Image
+                type: string
+              initImage:
+                description: Init container Image
+                type: string
+              interfaces:
+                description: List of interface regex. An interface group is created
+                  for every matching interface. All other interfaces are ignored.
+                items:
+                  type: string
+                type: array
+              nodeSelector:
+                additionalProperties:
+                  type: string
+                description: 'NodeSelector is a selector which must be true for the
+                  pod to fit on a node. Selector which must match a node''s labels
+                  for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/'
+                type: object
+                x-kubernetes-map-type: atomic
+              vrouter:
+                description: Vrouter configuration
+                properties:
+                  dpdkUioDriver:
+                    default: uio_pci_generic
+                    description: 'DPDK: uio_driver.'
+                    type: string
+                  imageRepository:
+                    description: Image Repository
+                    type: string
+                  imageTag:
+                    description: Image Tag
+                    type: string
+                type: object
+            type: object
+          status:
+            description: CrpdStatus defines the observed state of Crpd
+            properties:
+              interfaces:
+                additionalProperties:
+                  properties:
+                    discovered:
+                      description: Discovered is set to true if this interface is
+                        discovered by the init container
+                      type: boolean
+                    mac:
+                      description: Mac is the MAC address of the interface
+                      type: string
+                    v4Address:
+                      description: V4Address is the IPv4 address of the interface
+                      type: string
+                    v6Address:
+                      description: V6Address is the IPv6 address of the interface
+                      type: string
+                  type: object
+                description: A map of interface name and details of the interface
+                type: object
+              nodeName:
+                description: Node where this pod is scheduled
+                type: string
+              podIPs:
+                description: PodIPs is copied from Pod status
+                items:
+                  description: IpAddr representation (e.g. 192.168.1.1) Its public
+                    functions must not return other types than CIDR and IpAddr
+                  type: string
+                type: array
+              statefulSet:
+                description: The status of the statefulset set created for this CRPD
+                  instance
+                properties:
+                  availableReplicas:
+                    description: Total number of available pods (ready for at least
+                      minReadySeconds) targeted by this statefulset.
+                    format: int32
+                    type: integer
+                  collisionCount:
+                    description: collisionCount is the count of hash collisions for
+                      the StatefulSet. The StatefulSet controller uses this field
+                      as a collision avoidance mechanism when it needs to create the
+                      name for the newest ControllerRevision.
+                    format: int32
+                    type: integer
+                  conditions:
+                    description: Represents the latest available observations of a
+                      statefulset's current state.
+                    items:
+                      description: StatefulSetCondition describes the state of a statefulset
+                        at a certain point.
+                      properties:
+                        lastTransitionTime:
+                          description: Last time the condition transitioned from one
+                            status to another.
+                          format: date-time
+                          type: string
+                        message:
+                          description: A human readable message indicating details
+                            about the transition.
+                          type: string
+                        reason:
+                          description: The reason for the condition's last transition.
+                          type: string
+                        status:
+                          description: Status of the condition, one of True, False,
+                            Unknown.
+                          type: string
+                        type:
+                          description: Type of statefulset condition.
+                          type: string
+                      required:
+                      - status
+                      - type
+                      type: object
+                    type: array
+                  currentReplicas:
+                    description: currentReplicas is the number of Pods created by
+                      the StatefulSet controller from the StatefulSet version indicated
+                      by currentRevision.
+                    format: int32
+                    type: integer
+                  currentRevision:
+                    description: currentRevision, if not empty, indicates the version
+                      of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).
+                    type: string
+                  observedGeneration:
+                    description: observedGeneration is the most recent generation
+                      observed for this StatefulSet. It corresponds to the StatefulSet's
+                      generation, which is updated on mutation by the API Server.
+                    format: int64
+                    type: integer
+                  readyReplicas:
+                    description: readyReplicas is the number of pods created for this
+                      StatefulSet with a Ready Condition.
+                    format: int32
+                    type: integer
+                  replicas:
+                    description: replicas is the number of Pods created by the StatefulSet
+                      controller.
+                    format: int32
+                    type: integer
+                  updateRevision:
+                    description: updateRevision, if not empty, indicates the version
+                      of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)
+                    type: string
+                  updatedReplicas:
+                    description: updatedReplicas is the number of Pods created by
+                      the StatefulSet controller from the StatefulSet version indicated
+                      by updateRevision.
+                    format: int32
+                    type: integer
+                required:
+                - replicas
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: Crpd
+    listKind: CrpdList
+    plural: crpds
+    singular: crpd
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1

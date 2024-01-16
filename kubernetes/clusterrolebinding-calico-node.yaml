@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2023-12-27T09:46:14Z"
+  name: calico-node
+  uid: e146a51d-5f25-406e-8169-ac7ba7c1c77a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: calico-node
+subjects:
+- kind: ServiceAccount
+  name: calico-node
+  namespace: kube-system

@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    meta.helm.sh/release-name: jcnr
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2023-12-27T09:47:46Z"
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: jcnrstorage
+  uid: 249f6db2-6f37-42a6-b4cf-a716d2c7f670
+provisioner: kubernetes.io/no-provisioner
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer

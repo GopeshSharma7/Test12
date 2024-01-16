@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-12-27T09:42:47Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:endpointslicemirroring-controller
+  uid: 5f8e2bae-ea20-402c-b2d8-c57a4363126b
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:controller:endpointslicemirroring-controller
+subjects:
+- kind: ServiceAccount
+  name: endpointslicemirroring-controller
+  namespace: kube-system

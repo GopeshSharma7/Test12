@@ -1,0 +1,40 @@
+apiVersion: flowcontrol.apiserver.k8s.io/v1beta2
+kind: FlowSchema
+metadata:
+  annotations:
+    apf.kubernetes.io/autoupdate-spec: "true"
+  creationTimestamp: "2023-12-27T09:42:46Z"
+  name: exempt
+  uid: c8a117f0-c145-458f-bddf-c854c2ca050a
+spec:
+  matchingPrecedence: 1
+  priorityLevelConfiguration:
+    name: exempt
+  rules:
+  - nonResourceRules:
+    - nonResourceURLs:
+      - '*'
+      verbs:
+      - '*'
+    resourceRules:
+    - apiGroups:
+      - '*'
+      clusterScope: true
+      namespaces:
+      - '*'
+      resources:
+      - '*'
+      verbs:
+      - '*'
+    subjects:
+    - group:
+        name: system:masters
+      kind: Group
+status:
+  conditions:
+  - lastTransitionTime: "2023-12-27T09:42:46Z"
+    message: This FlowSchema references the PriorityLevelConfiguration object named
+      "exempt" and it exists
+    reason: Found
+    status: "False"
+    type: Dangling

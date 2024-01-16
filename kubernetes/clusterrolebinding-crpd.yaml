@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: jcnr
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2023-12-27T09:47:46Z"
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: crpd
+  uid: 133218f7-0177-4a2d-af67-be450b0d08e1
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: crpd
+subjects:
+- kind: ServiceAccount
+  name: crpd
+  namespace: jcnr

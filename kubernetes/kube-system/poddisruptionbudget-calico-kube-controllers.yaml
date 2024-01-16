@@ -1,0 +1,27 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  creationTimestamp: "2023-12-27T09:46:11Z"
+  labels:
+    k8s-app: calico-kube-controllers
+  name: calico-kube-controllers
+  namespace: kube-system
+  uid: 62185f13-114b-4bc4-8e4d-51c119b37b7f
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      k8s-app: calico-kube-controllers
+status:
+  conditions:
+  - lastTransitionTime: "2023-12-27T09:46:46Z"
+    message: ""
+    observedGeneration: 1
+    reason: SufficientPods
+    status: "True"
+    type: DisruptionAllowed
+  currentHealthy: 1
+  desiredHealthy: 0
+  disruptionsAllowed: 1
+  expectedPods: 1
+  observedGeneration: 1

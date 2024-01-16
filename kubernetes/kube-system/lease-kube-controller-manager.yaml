@@ -1,0 +1,13 @@
+apiVersion: coordination.k8s.io/v1
+kind: Lease
+metadata:
+  creationTimestamp: "2023-12-27T09:42:50Z"
+  name: kube-controller-manager
+  namespace: kube-system
+  uid: dff69403-256a-4ebf-96f9-54bd988daec3
+spec:
+  acquireTime: "2024-01-06T06:46:22.913067Z"
+  holderIdentity: sharmag-k8s-master-pnad30.englab.juniper.net_d10377dc-becf-4e71-a91f-953fc8f71eb7
+  leaseDurationSeconds: 15
+  leaseTransitions: 1
+  renewTime: "2024-01-16T08:59:07.385245Z"

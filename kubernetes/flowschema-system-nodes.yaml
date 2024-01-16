@@ -1,0 +1,42 @@
+apiVersion: flowcontrol.apiserver.k8s.io/v1beta2
+kind: FlowSchema
+metadata:
+  annotations:
+    apf.kubernetes.io/autoupdate-spec: "true"
+  creationTimestamp: "2023-12-27T09:42:46Z"
+  name: system-nodes
+  uid: 37fec27f-0260-4fed-b3be-220288cc814e
+spec:
+  distinguisherMethod:
+    type: ByUser
+  matchingPrecedence: 500
+  priorityLevelConfiguration:
+    name: system
+  rules:
+  - nonResourceRules:
+    - nonResourceURLs:
+      - '*'
+      verbs:
+      - '*'
+    resourceRules:
+    - apiGroups:
+      - '*'
+      clusterScope: true
+      namespaces:
+      - '*'
+      resources:
+      - '*'
+      verbs:
+      - '*'
+    subjects:
+    - group:
+        name: system:nodes
+      kind: Group
+status:
+  conditions:
+  - lastTransitionTime: "2023-12-27T09:42:46Z"
+    message: This FlowSchema references the PriorityLevelConfiguration object named
+      "system" and it exists
+    reason: Found
+    status: "False"
+    type: Dangling

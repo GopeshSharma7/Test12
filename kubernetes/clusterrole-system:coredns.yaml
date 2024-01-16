@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: "2023-12-27T09:42:49Z"
+  name: system:coredns
+  uid: 8c35127c-ffb7-4129-9933-6e4433e4ae23
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  - services
+  - pods
+  - namespaces
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - list
+  - watch

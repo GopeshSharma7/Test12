@@ -1,0 +1,198 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    cert-manager.io/inject-ca-from: CERTIFICATE_NAMESPACE/CERTIFICATE_NAME
+    controller-gen.kubebuilder.io/version: v0.12.0
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"cert-manager.io/inject-ca-from":"CERTIFICATE_NAMESPACE/CERTIFICATE_NAME","controller-gen.kubebuilder.io/version":"v0.12.0"},"name":"evpns.core.cerebrum.juniper.net"},"spec":{"conversion":{"strategy":"Webhook","webhook":{"clientConfig":{"service":{"name":"webhook-service","namespace":"system","path":"/convert"}},"conversionReviewVersions":["v1"]}},"group":"core.cerebrum.juniper.net","names":{"kind":"EVPN","listKind":"EVPNList","plural":"evpns","singular":"evpn"},"scope":"Namespaced","versions":[{"additionalPrinterColumns":[{"jsonPath":".status.allocatedVNI","name":"VNI","type":"integer"},{"jsonPath":".spec.routingInstanceParent.name","name":"RI","type":"string"}],"name":"v1","schema":{"openAPIV3Schema":{"description":"EVPN is the Schema for the evpns API","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"EVPNSpec defines the desired state of EVPN","properties":{"communityExportAllow":{"description":"Community Attribute Export Allow","type":"boolean"},"communityImportAllow":{"description":"Community Attribute Import Allow","type":"boolean"},"encapsulation":{"description":"Encapsulation type for EVPN Only vxlan is supported for now","enum":["vxlan"],"type":"string"},"exportPolicy":{"description":"Policy to control export of IP prefixes through EVPN","properties":{"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"routingInstanceParent":{"description":"Parent RoutingInstance of the EVPN object","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"},"vni":{"description":"VXLAN network identifier used for IP prefixes (4096..16777215) A value specified here is allocated from the default VNI pool. If both the VNI and the VNIAllocPool are unspecified, a VNI is auto-allocated from the default pool.","format":"int32","maximum":16777215,"minimum":4096,"type":"integer"},"vniAllocPool":{"description":"A pool to auto-allocate the VNI from. This should not be used when a VNI is explicitly specified. If both the VNI and the VNIAllocPool are unspecified, a VNI is auto-allocated from the default pool.","properties":{"apiVersion":{"description":"API version of the referent.","type":"string"},"fieldPath":{"description":"If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.","type":"string"},"kind":{"description":"Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"name":{"description":"Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names","type":"string"},"namespace":{"description":"Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/","type":"string"},"resourceVersion":{"description":"Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency","type":"string"},"uid":{"description":"UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids","type":"string"}},"type":"object","x-kubernetes-map-type":"atomic"}},"type":"object"},"status":{"description":"EVPNStatus defines the observed state of EVPN","properties":{"allocatedVNI":{"description":"Allocated VNI","format":"int32","type":"integer"}},"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2024-01-15T12:26:33Z"
+  name: evpns.core.cerebrum.juniper.net
+  uid: a745f57a-9bd9-4acc-9ad1-94cb83a58d9c
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      clientConfig:
+        service:
+          name: webhook-service
+          namespace: system
+          path: /convert
+          port: 443
+      conversionReviewVersions:
+      - v1
+  group: core.cerebrum.juniper.net
+  names:
+    kind: EVPN
+    listKind: EVPNList
+    plural: evpns
+    singular: evpn
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.allocatedVNI
+      name: VNI
+      type: integer
+    - jsonPath: .spec.routingInstanceParent.name
+      name: RI
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: EVPN is the Schema for the evpns API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: EVPNSpec defines the desired state of EVPN
+            properties:
+              communityExportAllow:
+                description: Community Attribute Export Allow
+                type: boolean
+              communityImportAllow:
+                description: Community Attribute Import Allow
+                type: boolean
+              encapsulation:
+                description: Encapsulation type for EVPN Only vxlan is supported for
+                  now
+                enum:
+                - vxlan
+                type: string
+              exportPolicy:
+                description: Policy to control export of IP prefixes through EVPN
+                properties:
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                      TODO: Add other useful fields. apiVersion, kind, uid?'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+              routingInstanceParent:
+                description: Parent RoutingInstance of the EVPN object
+                properties:
+                  apiVersion:
+                    description: API version of the referent.
+                    type: string
+                  fieldPath:
+                    description: 'If referring to a piece of an object instead of
+                      an entire object, this string should contain a valid JSON/Go
+                      field access statement, such as desiredState.manifest.containers[2].
+                      For example, if the object reference is to a container within
+                      a pod, this would take on a value like: "spec.containers{name}"
+                      (where "name" refers to the name of the container that triggered
+                      the event) or if no container name is specified "spec.containers[2]"
+                      (container with index 2 in this pod). This syntax is chosen
+                      only to have some well-defined way of referencing a part of
+                      an object. TODO: this design is not final and this field is
+                      subject to change in the future.'
+                    type: string
+                  kind:
+                    description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                    type: string
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                    type: string
+                  namespace:
+                    description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                    type: string
+                  resourceVersion:
+                    description: 'Specific resourceVersion to which this reference
+                      is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                    type: string
+                  uid:
+                    description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+              vni:
+                description: VXLAN network identifier used for IP prefixes (4096..16777215)
+                  A value specified here is allocated from the default VNI pool. If
+                  both the VNI and the VNIAllocPool are unspecified, a VNI is auto-allocated
+                  from the default pool.
+                format: int32
+                maximum: 16777215
+                minimum: 4096
+                type: integer
+              vniAllocPool:
+                description: A pool to auto-allocate the VNI from. This should not
+                  be used when a VNI is explicitly specified. If both the VNI and
+                  the VNIAllocPool are unspecified, a VNI is auto-allocated from the
+                  default pool.
+                properties:
+                  apiVersion:
+                    description: API version of the referent.
+                    type: string
+                  fieldPath:
+                    description: 'If referring to a piece of an object instead of
+                      an entire object, this string should contain a valid JSON/Go
+                      field access statement, such as desiredState.manifest.containers[2].
+                      For example, if the object reference is to a container within
+                      a pod, this would take on a value like: "spec.containers{name}"
+                      (where "name" refers to the name of the container that triggered
+                      the event) or if no container name is specified "spec.containers[2]"
+                      (container with index 2 in this pod). This syntax is chosen
+                      only to have some well-defined way of referencing a part of
+                      an object. TODO: this design is not final and this field is
+                      subject to change in the future.'
+                    type: string
+                  kind:
+                    description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                    type: string
+                  name:
+                    description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                    type: string
+                  namespace:
+                    description: 'Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/'
+                    type: string
+                  resourceVersion:
+                    description: 'Specific resourceVersion to which this reference
+                      is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency'
+                    type: string
+                  uid:
+                    description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
+                    type: string
+                type: object
+                x-kubernetes-map-type: atomic
+            type: object
+          status:
+            description: EVPNStatus defines the observed state of EVPN
+            properties:
+              allocatedVNI:
+                description: Allocated VNI
+                format: int32
+                type: integer
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: EVPN
+    listKind: EVPNList
+    plural: evpns
+    singular: evpn
+  conditions:
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2024-01-15T12:26:33Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1
