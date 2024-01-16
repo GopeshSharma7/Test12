@@ -7,7 +7,7 @@ metadata:
   creationTimestamp: "2024-01-16T09:00:45Z"
   labels:
     author: kubernetes-admin
-    operation: CREATE
+    operation: UPDATE
   name: secure-gateway-ipsec
   namespace: test
   uid: b42856f8-80b0-4eb9-9235-5f99b06f1bb6
@@ -20,7 +20,7 @@ spec:
       trafficSelectorLocalIps:
       - 111.1.1.0/24
       trafficSelectorRemoteIps:
-      - 222.1.1.0/24
+      - 222.1.1.0/32
     networks:
     - ipv4Gateway: 181.1.1.2
       name: net-trust
