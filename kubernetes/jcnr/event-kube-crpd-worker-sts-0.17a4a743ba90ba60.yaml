@@ -1,5 +1,5 @@
 apiVersion: v1
-count: 22918
+count: 22922
 eventTime: null
 firstTimestamp: "2023-12-27T09:47:48Z"
 involvedObject:
@@ -10,7 +10,7 @@ involvedObject:
   resourceVersion: "1314"
   uid: c23f0f12-0cda-45e7-8c9d-8b877547e7dc
 kind: Event
-lastTimestamp: "2024-01-16T10:02:50Z"
+lastTimestamp: "2024-01-16T10:08:05Z"
 message: 'Nameserver limits were exceeded, some nameservers have been omitted, the
   applied nameserver line is: 10.84.5.101 172.21.200.60 66.129.233.81'
 metadata:
