@@ -1,0 +1,30 @@
+apiVersion: security.cerebrum.juniper.net/v1
+kind: SecureGateway
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"security.cerebrum.juniper.net/v1","kind":"SecureGateway","metadata":{"annotations":{},"name":"secure-gateway-ipsec","namespace":"test"},"spec":{"serviceChainType":"host-based-routing-inline","services":[{"config":{"authenticationAlgorithm":"hmac-sha-256-128","encryptionAlgorithm":"aes-256-cbc","trafficSelectorLocalIps":["111.1.1.0/24"],"trafficSelectorRemoteIps":["222.1.1.0/24"]},"networks":[{"ipv4Gateway":"181.1.1.2","name":"net-trust"},{"ipv4Address":"1.21.1.2/30","ipv4Gateway":"1.21.1.1","name":"net-untrust"}],"type":"ip-sec-service"}]}}
+  creationTimestamp: "2024-01-16T09:00:45Z"
+  labels:
+    author: kubernetes-admin
+    operation: CREATE
+  name: secure-gateway-ipsec
+  namespace: test
+  uid: b42856f8-80b0-4eb9-9235-5f99b06f1bb6
+spec:
+  serviceChainType: host-based-routing-inline
+  services:
+  - config:
+      authenticationAlgorithm: hmac-sha-256-128
+      encryptionAlgorithm: aes-256-cbc
+      trafficSelectorLocalIps:
+      - 111.1.1.0/24
+      trafficSelectorRemoteIps:
+      - 222.1.1.0/24
+    networks:
+    - ipv4Gateway: 181.1.1.2
+      name: net-trust
+    - ipv4Address: 1.21.1.2/30
+      ipv4Gateway: 1.21.1.1
+      name: net-untrust
+    type: ip-sec-service
