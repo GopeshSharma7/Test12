@@ -1,0 +1,27 @@
+apiVersion: v1
+count: 1
+eventTime: null
+firstTimestamp: "2024-01-30T10:19:19Z"
+involvedObject:
+  apiVersion: v1
+  fieldPath: spec.containers{gitea}
+  kind: Pod
+  name: gitea-7c6954fdcd-ftscd
+  namespace: default
+  resourceVersion: "3669336"
+  uid: bf6594de-c40b-4d72-b1f5-d48af978681f
+kind: Event
+lastTimestamp: "2024-01-30T10:19:19Z"
+message: Stopping container gitea
+metadata:
+  creationTimestamp: "2024-01-30T10:19:19Z"
+  name: gitea-7c6954fdcd-ftscd.17af18b750cbb76b
+  namespace: default
+  uid: d7b39a5a-b6d3-4ee0-861a-be3060c8d633
+reason: Killing
+reportingComponent: kubelet
+reportingInstance: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+source:
+  component: kubelet
+  host: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+type: Normal

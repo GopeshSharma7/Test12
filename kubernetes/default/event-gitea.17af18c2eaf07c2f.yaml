@@ -1,0 +1,25 @@
+apiVersion: v1
+count: 1
+eventTime: null
+firstTimestamp: "2024-01-30T10:20:09Z"
+involvedObject:
+  apiVersion: apps/v1
+  kind: Deployment
+  name: gitea
+  namespace: default
+  resourceVersion: "4323597"
+  uid: 7fb62a77-3e14-4184-bfaf-7e91a70bb591
+kind: Event
+lastTimestamp: "2024-01-30T10:20:09Z"
+message: Scaled up replica set gitea-7c6954fdcd to 1
+metadata:
+  creationTimestamp: "2024-01-30T10:20:09Z"
+  name: gitea.17af18c2eaf07c2f
+  namespace: default
+  uid: bf1e99ae-4be6-45db-aad3-68a412fe2010
+reason: ScalingReplicaSet
+reportingComponent: deployment-controller
+reportingInstance: ""
+source:
+  component: deployment-controller
+type: Normal

@@ -5,12 +5,12 @@ metadata:
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"git-volume","namespace":"default"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"5Gi"}},"storageClassName":"jcnrstorage","volumeName":"git-pv"}}
     pv.kubernetes.io/bind-completed: "yes"
-  creationTimestamp: "2024-01-25T05:52:01Z"
+  creationTimestamp: "2024-01-30T10:20:09Z"
   finalizers:
   - kubernetes.io/pvc-protection
   name: git-volume
   namespace: default
-  uid: f92d1d85-7618-4a36-9ebc-8b4bf53d036f
+  uid: 55c911da-357e-41b0-b85f-50642f2baa18
 spec:
   accessModes:
   - ReadWriteOnce

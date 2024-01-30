@@ -1,0 +1,25 @@
+apiVersion: v1
+count: 1
+eventTime: null
+firstTimestamp: "2024-01-30T10:20:09Z"
+involvedObject:
+  apiVersion: apps/v1
+  kind: ReplicaSet
+  name: gitea-7c6954fdcd
+  namespace: default
+  resourceVersion: "4323599"
+  uid: 4116c098-a389-40cf-bdc6-3d0c12d83984
+kind: Event
+lastTimestamp: "2024-01-30T10:20:09Z"
+message: 'Created pod: gitea-7c6954fdcd-6lj4s'
+metadata:
+  creationTimestamp: "2024-01-30T10:20:09Z"
+  name: gitea-7c6954fdcd.17af18c2ebe0a029
+  namespace: default
+  uid: f761fe64-0414-4556-a844-109fe3759c94
+reason: SuccessfulCreate
+reportingComponent: replicaset-controller
+reportingInstance: ""
+source:
+  component: replicaset-controller
+type: Normal

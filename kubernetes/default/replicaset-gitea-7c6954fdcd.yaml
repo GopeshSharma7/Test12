@@ -5,7 +5,7 @@ metadata:
     deployment.kubernetes.io/desired-replicas: "1"
     deployment.kubernetes.io/max-replicas: "2"
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: "2024-01-25T05:52:01Z"
+  creationTimestamp: "2024-01-30T10:20:09Z"
   labels:
     app: gitea
     pod-template-hash: 7c6954fdcd
@@ -17,8 +17,8 @@ metadata:
     controller: true
     kind: Deployment
     name: gitea
-    uid: 0f4632ac-01d4-4524-9b09-ca97bd488e56
-  uid: 26597072-c919-47e9-9450-03b7f2967153
+    uid: 7fb62a77-3e14-4184-bfaf-7e91a70bb591
+  uid: 4116c098-a389-40cf-bdc6-3d0c12d83984
 spec:
   replicas: 1
   selector:
