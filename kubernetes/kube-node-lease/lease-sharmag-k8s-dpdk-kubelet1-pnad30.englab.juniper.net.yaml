@@ -13,4 +13,4 @@ metadata:
 spec:
   holderIdentity: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
   leaseDurationSeconds: 40
-  renewTime: "2024-01-30T10:48:34.837658Z"
+  renewTime: "2024-01-30T10:48:45.022849Z"
