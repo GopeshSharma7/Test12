@@ -2,20 +2,20 @@ apiVersion: v1
 kind: Endpoints
 metadata:
   annotations:
-    endpoints.kubernetes.io/last-change-trigger-time: "2024-01-15T12:15:59Z"
-  creationTimestamp: "2024-01-15T12:15:53Z"
+    endpoints.kubernetes.io/last-change-trigger-time: "2024-01-19T18:50:16Z"
+  creationTimestamp: "2024-01-19T18:50:14Z"
   name: example-webhook
   namespace: default
-  uid: b25660e3-80fe-4ce5-93d9-496f28a94959
+  uid: a425dbfb-d81c-4fc4-b7ee-ea071fa7d666
 subsets:
 - addresses:
-  - ip: 10.244.35.137
+  - ip: 10.244.35.152
     nodeName: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
     targetRef:
       kind: Pod
-      name: example-webhook-66f6b79986-kz685
+      name: example-webhook-759d9786bf-824tf
       namespace: default
-      uid: d83cbb0c-6d4b-48d7-b496-99f4d83e568c
+      uid: 7c55a636-9bd9-4652-9af8-65dcc95dbb5a
   ports:
   - name: application
     port: 8443
