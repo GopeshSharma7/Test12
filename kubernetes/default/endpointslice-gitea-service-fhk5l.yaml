@@ -1,0 +1,38 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 10.244.35.154
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+  targetRef:
+    kind: Pod
+    name: gitea-7c6954fdcd-6lj4s
+    namespace: default
+    uid: 5e95cecf-27fa-42bf-8d66-aa1e10c89b76
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2024-01-30T10:20:44Z"
+  creationTimestamp: "2024-01-30T10:20:44Z"
+  generateName: gitea-service-
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kubernetes.io/service-name: gitea-service
+  name: gitea-service-fhk5l
+  namespace: default
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: gitea-service
+    uid: 0ccbadab-da65-47d2-9264-9d8e5e9074aa
+  uid: 6e2a03c3-d904-4ef5-8e6a-040db69093c6
+ports:
+- name: ""
+  port: 3000
+  protocol: TCP

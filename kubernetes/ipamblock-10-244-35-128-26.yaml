@@ -34,8 +34,8 @@ spec:
   - null
   - null
   - 3
-  - 4
   - null
+  - 4
   - null
   - null
   - null
@@ -96,15 +96,15 @@ spec:
       node: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
       pod: example-webhook-759d9786bf-824tf
       timestamp: 2024-01-19 18:50:14.909928623 +0000 UTC
-  - handle_id: k8s-pod-network.6d849153eb4fbe47882f83b930858f187c171fd09c622b375b6ce1308603c1ab
+  - handle_id: k8s-pod-network.529276902baaec7baf52fa6782a71573d401ce88052dce11cde35e59ab12406c
     secondary:
       namespace: default
       node: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
-      pod: gitea-7c6954fdcd-ftscd
-      timestamp: 2024-01-25 05:52:16.220782487 +0000 UTC
+      pod: gitea-7c6954fdcd-6lj4s
+      timestamp: 2024-01-30 10:20:17.371628188 +0000 UTC
   cidr: 10.244.35.128/26
   deleted: false
-  sequenceNumber: 1703670390757791032
+  sequenceNumber: 1703670390757791034
   sequenceNumberForAllocation:
     "0": 1703670390757790985
     "1": 1703670390757790986
@@ -132,9 +132,9 @@ spec:
     "23": 1703670390757791028
     "24": 1703670390757791030
     "25": 1703670390757791031
+    "26": 1703670390757791033
   strictAffinity: false
   unallocated:
-  - 26
   - 27
   - 28
   - 29
@@ -193,3 +193,4 @@ spec:
   - 21
   - 22
   - 23
+  - 25
