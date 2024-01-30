@@ -1,24 +1,24 @@
 action: Binding
-apiVersion: v1
+apiVersion: events.k8s.io/v1
+deprecatedFirstTimestamp: null
+deprecatedLastTimestamp: null
+deprecatedSource: {}
 eventTime: "2024-01-30T10:20:16.955745Z"
-firstTimestamp: null
-involvedObject:
+kind: Event
+metadata:
+  creationTimestamp: "2024-01-30T10:20:16Z"
+  name: gitea-7c6954fdcd-6lj4s.17af18c4b6c5b752
+  namespace: default
+  uid: 8a1ec818-bbc4-48df-8efe-874467408fcc
+note: Successfully assigned default/gitea-7c6954fdcd-6lj4s to sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+reason: Scheduled
+regarding:
   apiVersion: v1
   kind: Pod
   name: gitea-7c6954fdcd-6lj4s
   namespace: default
   resourceVersion: "4323604"
   uid: 5e95cecf-27fa-42bf-8d66-aa1e10c89b76
-kind: Event
-lastTimestamp: null
-message: Successfully assigned default/gitea-7c6954fdcd-6lj4s to sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
-metadata:
-  creationTimestamp: "2024-01-30T10:20:16Z"
-  name: gitea-7c6954fdcd-6lj4s.17af18c4b6c5b752
-  namespace: default
-  uid: 8a1ec818-bbc4-48df-8efe-874467408fcc
-reason: Scheduled
-reportingComponent: default-scheduler
+reportingController: default-scheduler
 reportingInstance: default-scheduler-sharmag-k8s-master-pnad30.englab.juniper.net
-source: {}
 type: Normal
