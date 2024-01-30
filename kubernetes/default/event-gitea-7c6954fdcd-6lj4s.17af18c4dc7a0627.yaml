@@ -1,20 +1,8 @@
-apiVersion: events.k8s.io/v1
-deprecatedCount: 1
-deprecatedFirstTimestamp: "2024-01-30T10:20:17Z"
-deprecatedLastTimestamp: "2024-01-30T10:20:17Z"
-deprecatedSource:
-  component: kubelet
-  host: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+apiVersion: v1
+count: 1
 eventTime: null
-kind: Event
-metadata:
-  creationTimestamp: "2024-01-30T10:20:17Z"
-  name: gitea-7c6954fdcd-6lj4s.17af18c4dc7a0627
-  namespace: default
-  uid: 9df89609-8447-404a-873b-6d234cd281de
-note: Started container gitea
-reason: Started
-regarding:
+firstTimestamp: "2024-01-30T10:20:17Z"
+involvedObject:
   apiVersion: v1
   fieldPath: spec.containers{gitea}
   kind: Pod
@@ -22,6 +10,18 @@ regarding:
   namespace: default
   resourceVersion: "4323622"
   uid: 5e95cecf-27fa-42bf-8d66-aa1e10c89b76
-reportingController: kubelet
+kind: Event
+lastTimestamp: "2024-01-30T10:20:17Z"
+message: Started container gitea
+metadata:
+  creationTimestamp: "2024-01-30T10:20:17Z"
+  name: gitea-7c6954fdcd-6lj4s.17af18c4dc7a0627
+  namespace: default
+  uid: 9df89609-8447-404a-873b-6d234cd281de
+reason: Started
+reportingComponent: kubelet
 reportingInstance: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+source:
+  component: kubelet
+  host: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
 type: Normal

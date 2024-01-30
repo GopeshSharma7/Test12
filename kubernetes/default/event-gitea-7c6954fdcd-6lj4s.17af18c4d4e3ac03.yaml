@@ -1,23 +1,25 @@
-apiVersion: events.k8s.io/v1
-deprecatedCount: 1
-deprecatedFirstTimestamp: "2024-01-30T10:20:17Z"
-deprecatedLastTimestamp: "2024-01-30T10:20:17Z"
-deprecatedSource:
-  component: multus
+apiVersion: v1
+count: 1
 eventTime: null
-kind: Event
-metadata:
-  creationTimestamp: "2024-01-30T10:20:17Z"
-  name: gitea-7c6954fdcd-6lj4s.17af18c4d4e3ac03
-  namespace: default
-  uid: 7a5459a3-e32a-42c5-bbeb-481920518e4d
-note: Add eth0 [10.244.35.154/32] from k8s-pod-network
-reason: AddedInterface
-regarding:
+firstTimestamp: "2024-01-30T10:20:17Z"
+involvedObject:
   apiVersion: v1
   kind: Pod
   name: gitea-7c6954fdcd-6lj4s
   namespace: default
   resourceVersion: "4323624"
   uid: 5e95cecf-27fa-42bf-8d66-aa1e10c89b76
+kind: Event
+lastTimestamp: "2024-01-30T10:20:17Z"
+message: Add eth0 [10.244.35.154/32] from k8s-pod-network
+metadata:
+  creationTimestamp: "2024-01-30T10:20:17Z"
+  name: gitea-7c6954fdcd-6lj4s.17af18c4d4e3ac03
+  namespace: default
+  uid: 7a5459a3-e32a-42c5-bbeb-481920518e4d
+reason: AddedInterface
+reportingComponent: ""
+reportingInstance: ""
+source:
+  component: multus
 type: Normal
