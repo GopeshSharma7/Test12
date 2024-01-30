@@ -6,8 +6,8 @@ metadata:
   namespace: kube-system
   uid: c716bb02-05d7-4e5b-a630-09475e15d807
 spec:
-  acquireTime: "2024-01-06T07:02:51.235331Z"
-  holderIdentity: sharmag-k8s-master-pnad30.englab.juniper.net_20aff8eb-2107-4c88-9fb8-90d361e961a6
+  acquireTime: "2024-01-20T23:56:15.925197Z"
+  holderIdentity: sharmag-k8s-master-pnad30.englab.juniper.net_caadff94-1645-4721-b016-260c90461edf
   leaseDurationSeconds: 15
-  leaseTransitions: 1
-  renewTime: "2024-01-16T10:18:52.950524Z"
+  leaseTransitions: 4
+  renewTime: "2024-01-30T09:58:14.562371Z"

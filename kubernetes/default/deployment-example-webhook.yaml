@@ -4,13 +4,13 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
     kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"example-webhook"},"name":"example-webhook","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"example-webhook"}},"template":{"metadata":{"labels":{"app":"example-webhook"}},"spec":{"containers":[{"image":"svl-artifactory.juniper.net/atom-docker/cn2/jetstack/trohit7/muatatewebhook:v25","name":"server","ports":[{"containerPort":8443,"name":"tls"},{"containerPort":80,"name":"metrics"}],"volumeMounts":[{"mountPath":"/etc/webhook/certs/","name":"webhook-tls-certs","readOnly":true}]}],"nodeSelector":{"kubernetes.io/os":"linux"},"securityContext":{"runAsNonRoot":true,"runAsUser":1234},"serviceAccountName":"example-webhook","volumes":[{"name":"webhook-tls-certs","secret":{"secretName":"example-webhook-tls"}}]}}}}
-  creationTimestamp: "2024-01-15T12:15:53Z"
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"example-webhook"},"name":"example-webhook","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"example-webhook"}},"template":{"metadata":{"labels":{"app":"example-webhook"}},"spec":{"containers":[{"image":"10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/mutate-webhook:CER-183","name":"server","ports":[{"containerPort":8443,"name":"tls"},{"containerPort":80,"name":"metrics"}],"volumeMounts":[{"mountPath":"/etc/webhook/certs/","name":"webhook-tls-certs","readOnly":true}]}],"nodeSelector":{"kubernetes.io/os":"linux"},"securityContext":{"runAsNonRoot":true,"runAsUser":1234},"serviceAccountName":"example-webhook","volumes":[{"name":"webhook-tls-certs","secret":{"secretName":"example-webhook-tls"}}]}}}}
+  creationTimestamp: "2024-01-19T18:50:14Z"
   labels:
     app: example-webhook
   name: example-webhook
   namespace: default
-  uid: 0db81a07-6e4c-4e86-a8c5-62ab60c786f3
+  uid: b00a83a6-6ac0-40dd-ab37-f380ced834aa
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -30,7 +30,7 @@ spec:
         app: example-webhook
     spec:
       containers:
-      - image: svl-artifactory.juniper.net/atom-docker/cn2/jetstack/trohit7/muatatewebhook:v25
+      - image: 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/mutate-webhook:CER-183
         imagePullPolicy: IfNotPresent
         name: server
         ports:
@@ -66,15 +66,15 @@ spec:
 status:
   availableReplicas: 1
   conditions:
-  - lastTransitionTime: "2024-01-15T12:15:59Z"
-    lastUpdateTime: "2024-01-15T12:15:59Z"
+  - lastTransitionTime: "2024-01-19T18:50:16Z"
+    lastUpdateTime: "2024-01-19T18:50:16Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  - lastTransitionTime: "2024-01-15T12:15:53Z"
-    lastUpdateTime: "2024-01-15T12:15:59Z"
-    message: ReplicaSet "example-webhook-66f6b79986" has successfully progressed.
+  - lastTransitionTime: "2024-01-19T18:50:14Z"
+    lastUpdateTime: "2024-01-19T18:50:16Z"
+    message: ReplicaSet "example-webhook-759d9786bf" has successfully progressed.
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing

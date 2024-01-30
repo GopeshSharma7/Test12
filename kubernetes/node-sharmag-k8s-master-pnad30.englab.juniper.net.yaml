@@ -52,25 +52,25 @@ status:
     reason: CalicoIsUp
     status: "False"
     type: NetworkUnavailable
-  - lastHeartbeatTime: "2024-01-16T10:16:23Z"
+  - lastHeartbeatTime: "2024-01-30T09:55:26Z"
     lastTransitionTime: "2023-12-27T09:42:45Z"
     message: kubelet has sufficient memory available
     reason: KubeletHasSufficientMemory
     status: "False"
     type: MemoryPressure
-  - lastHeartbeatTime: "2024-01-16T10:16:23Z"
+  - lastHeartbeatTime: "2024-01-30T09:55:26Z"
     lastTransitionTime: "2023-12-27T09:42:45Z"
     message: kubelet has no disk pressure
     reason: KubeletHasNoDiskPressure
     status: "False"
     type: DiskPressure
-  - lastHeartbeatTime: "2024-01-16T10:16:23Z"
+  - lastHeartbeatTime: "2024-01-30T09:55:26Z"
     lastTransitionTime: "2023-12-27T09:42:45Z"
     message: kubelet has sufficient PID available
     reason: KubeletHasSufficientPID
     status: "False"
     type: PIDPressure
-  - lastHeartbeatTime: "2024-01-16T10:16:23Z"
+  - lastHeartbeatTime: "2024-01-30T09:55:26Z"
     lastTransitionTime: "2023-12-27T09:42:46Z"
     message: kubelet is posting ready status. AppArmor enabled
     reason: KubeletReady
@@ -135,6 +135,14 @@ status:
     - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio@sha256:23e522daed8049173285c813610b697fd8cf731ff76ac49b0b4fd55e08f7954d
     - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/katafygio:h2
     sizeBytes: 109869320
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/mutatingwebhook@sha256:2aa7328d80e7a4bba5e5e325d6ce63902c91df7bc6b994252b1cd434042227ac
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/mutatingwebhook:m6
+    sizeBytes: 108166170
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/mutatingwebhook@sha256:a4c3598356fea91152fa4d79450aef61ac2109796edb4ee4653a6eafe5b8e58c
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/mutatingwebhook:m9
+    sizeBytes: 108162074
   - names:
     - svl-artifactory.juniper.net/contrail-docker/x86_64/syslog-ng@sha256:fb5713aa3659e2c6f9d2618006bc229cd0be4a2e2f87f680ef07700aeef293ee
     - svl-artifactory.juniper.net/contrail-docker/x86_64/syslog-ng:v6

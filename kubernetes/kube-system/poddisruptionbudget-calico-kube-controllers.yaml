@@ -14,7 +14,7 @@ spec:
       k8s-app: calico-kube-controllers
 status:
   conditions:
-  - lastTransitionTime: "2023-12-27T09:46:46Z"
+  - lastTransitionTime: "2024-01-26T14:47:55Z"
     message: ""
     observedGeneration: 1
     reason: SufficientPods

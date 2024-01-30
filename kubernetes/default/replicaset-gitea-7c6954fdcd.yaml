@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2024-01-25T05:52:01Z"
+  labels:
+    app: gitea
+    pod-template-hash: 7c6954fdcd
+  name: gitea-7c6954fdcd
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: gitea
+    uid: 0f4632ac-01d4-4524-9b09-ca97bd488e56
+  uid: 26597072-c919-47e9-9450-03b7f2967153
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitea
+      pod-template-hash: 7c6954fdcd
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gitea
+        pod-template-hash: 7c6954fdcd
+    spec:
+      containers:
+      - image: svl-artifactory.juniper.net/atom-docker/cn2/trohit7/gitea/gitea:1.21.4-rootless
+        imagePullPolicy: IfNotPresent
+        name: gitea
+        ports:
+        - containerPort: 3000
+          name: gitea
+          protocol: TCP
+        - containerPort: 22
+          name: git-ssh
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: git-volume
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: git-volume
+        persistentVolumeClaim:
+          claimName: git-volume
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1

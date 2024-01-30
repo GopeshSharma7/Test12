@@ -50,25 +50,25 @@ status:
     reason: CalicoIsUp
     status: "False"
     type: NetworkUnavailable
-  - lastHeartbeatTime: "2024-01-16T10:16:53Z"
+  - lastHeartbeatTime: "2024-01-30T09:58:02Z"
     lastTransitionTime: "2023-12-27T09:45:53Z"
     message: kubelet has sufficient memory available
     reason: KubeletHasSufficientMemory
     status: "False"
     type: MemoryPressure
-  - lastHeartbeatTime: "2024-01-16T10:16:53Z"
+  - lastHeartbeatTime: "2024-01-30T09:58:02Z"
     lastTransitionTime: "2023-12-27T09:45:53Z"
     message: kubelet has no disk pressure
     reason: KubeletHasNoDiskPressure
     status: "False"
     type: DiskPressure
-  - lastHeartbeatTime: "2024-01-16T10:16:53Z"
+  - lastHeartbeatTime: "2024-01-30T09:58:02Z"
     lastTransitionTime: "2023-12-27T09:45:53Z"
     message: kubelet has sufficient PID available
     reason: KubeletHasSufficientPID
     status: "False"
     type: PIDPressure
-  - lastHeartbeatTime: "2024-01-16T10:16:53Z"
+  - lastHeartbeatTime: "2024-01-30T09:58:02Z"
     lastTransitionTime: "2023-12-27T09:45:53Z"
     message: kubelet is posting ready status. AppArmor enabled
     reason: KubeletReady
@@ -130,6 +130,25 @@ status:
     - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/contrail-vrouter-kernel-init-dpdk:master
     sizeBytes: 153845890
   - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/gitea/gitea@sha256:e881be33a508bc78c04e18aa167a449c4910f28ea11f25981abdc0ca47073fcd
+    - svl-artifactory.juniper.net/atom-docker/cn2/trohit7/gitea/gitea:1.21.4-rootless
+    sizeBytes: 151604040
+  - names:
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/mutate-webhook@sha256:c4d4fdc73a4203ff3be2410415f1bef50870297d258626317a0ba7cf97beaace
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/mutate-webhook:CER-183
+    sizeBytes: 131911779
+  - names:
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/mutating-webhook@sha256:4cdbf484f93c7a95e5e74d416cf51a0a9c93ecf73def1b8be560505e9c76a730
+    - 10.108.30.10:5000/atom-docker/cn2/bazel-build/dev/x86_64/mutating-webhook:CER-183
+    sizeBytes: 130744425
+  - names:
+    - 10.108.30.10@sha256:5035e2ace6b3663e9bf5c63b32cdfec3eb60f6bafb3314a0fe7de045ce51afc0
+    sizeBytes: 130744399
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/mutatingwebhook@sha256:6a5c937bb3a042a8c7f3f9c618b1c62ea5858b5c16764369bb992fda339810eb
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/mutatingwebhook:m11
+    sizeBytes: 108178458
+  - names:
     - svl-artifactory.juniper.net/atom-docker/cn2/jetstack/trohit7/muatatewebhook@sha256:01195e91f2840b78925ccb4bb12ba25c633de257ce2f4220ec4a23f39d352f85
     - svl-artifactory.juniper.net/atom-docker/cn2/jetstack/trohit7/muatatewebhook:v25
     sizeBytes: 99280919
@@ -168,6 +187,10 @@ status:
     - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/coredns@sha256:be7652ce0b43b1339f3d14d9b14af9f588578011092c1f7893bd55432d83a378
     - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/coredns:v1.10.1
     sizeBytes: 53619670
+  - names:
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/mutatingwebhook@sha256:163d17c2fa8177e6b5ccfbe9a07eb7cf2e174d739ebdb153b5b8fa347984e0ba
+    - svl-artifactory.juniper.net/atom-docker/cn2/sharmag07/mutatingwebhook:m8
+    sizeBytes: 39065622
   - names:
     - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/pause@sha256:0fc1f3b764be56f7c881a69cbd553ae25a2b5523c6901fbacb8270307c29d0c4
     - registry.englab.juniper.net/jfrog-repo/hosted_docker_images/pause:3.9

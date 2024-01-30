@@ -1,0 +1,13 @@
+apiVersion: crd.projectcalico.org/v1
+kind: IPAMHandle
+metadata:
+  annotations:
+    projectcalico.org/metadata: '{"creationTimestamp":null}'
+  creationTimestamp: "2024-01-19T18:50:14Z"
+  name: k8s-pod-network.5607f9ed612cc8c5197fc81f049a6054aee3d46caeee0e140b87b13589f97fb3
+  uid: dceade40-1605-4621-985b-896a191e13d6
+spec:
+  block:
+    10.244.35.128/26: 1
+  deleted: false
+  handleID: k8s-pod-network.5607f9ed612cc8c5197fc81f049a6054aee3d46caeee0e140b87b13589f97fb3
