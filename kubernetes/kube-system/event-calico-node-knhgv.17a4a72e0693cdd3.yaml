@@ -1,7 +1,7 @@
 apiVersion: events.k8s.io/v1
-deprecatedCount: 38961
+deprecatedCount: 38965
 deprecatedFirstTimestamp: "2023-12-27T09:46:15Z"
-deprecatedLastTimestamp: "2024-01-30T10:57:13Z"
+deprecatedLastTimestamp: "2024-01-30T11:02:39Z"
 deprecatedSource:
   component: kubelet
   host: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
