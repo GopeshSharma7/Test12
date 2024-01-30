@@ -1,21 +1,8 @@
-apiVersion: events.k8s.io/v1
-deprecatedCount: 1
-deprecatedFirstTimestamp: "2024-01-30T10:20:17Z"
-deprecatedLastTimestamp: "2024-01-30T10:20:17Z"
-deprecatedSource:
-  component: kubelet
-  host: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+apiVersion: v1
+count: 1
 eventTime: null
-kind: Event
-metadata:
-  creationTimestamp: "2024-01-30T10:20:17Z"
-  name: gitea-7c6954fdcd-6lj4s.17af18c4d79edb29
-  namespace: default
-  uid: 2a617a8d-a4b8-4104-80db-544ecea3b20c
-note: Container image "svl-artifactory.juniper.net/atom-docker/cn2/trohit7/gitea/gitea:1.21.4-rootless"
-  already present on machine
-reason: Pulled
-regarding:
+firstTimestamp: "2024-01-30T10:20:17Z"
+involvedObject:
   apiVersion: v1
   fieldPath: spec.containers{gitea}
   kind: Pod
@@ -23,6 +10,19 @@ regarding:
   namespace: default
   resourceVersion: "4323622"
   uid: 5e95cecf-27fa-42bf-8d66-aa1e10c89b76
-reportingController: kubelet
+kind: Event
+lastTimestamp: "2024-01-30T10:20:17Z"
+message: Container image "svl-artifactory.juniper.net/atom-docker/cn2/trohit7/gitea/gitea:1.21.4-rootless"
+  already present on machine
+metadata:
+  creationTimestamp: "2024-01-30T10:20:17Z"
+  name: gitea-7c6954fdcd-6lj4s.17af18c4d79edb29
+  namespace: default
+  uid: 2a617a8d-a4b8-4104-80db-544ecea3b20c
+reason: Pulled
+reportingComponent: kubelet
 reportingInstance: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+source:
+  component: kubelet
+  host: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
 type: Normal

@@ -1,24 +1,25 @@
-apiVersion: events.k8s.io/v1
-deprecatedCount: 54445
-deprecatedFirstTimestamp: "2024-01-20T23:56:28Z"
-deprecatedLastTimestamp: "2024-01-30T10:46:32Z"
-deprecatedSource:
-  component: persistentvolume-controller
+apiVersion: v1
+count: 54505
 eventTime: null
-kind: Event
-metadata:
-  creationTimestamp: "2024-01-20T23:56:28Z"
-  name: conf-kube-crpd-worker-sts-1.17ac338105e71aab
-  namespace: jcnr
-  uid: cf045cb8-3807-4b26-a50b-85152ebbe0a6
-note: waiting for pod kube-crpd-worker-sts-1 to be scheduled
-reason: WaitForPodScheduled
-regarding:
+firstTimestamp: "2024-01-20T23:56:28Z"
+involvedObject:
   apiVersion: v1
   kind: PersistentVolumeClaim
   name: conf-kube-crpd-worker-sts-1
   namespace: jcnr
   resourceVersion: "1277"
   uid: e12a497e-6de7-4d8a-b404-657abe18c8c6
-reportingController: persistentvolume-controller
+kind: Event
+lastTimestamp: "2024-01-30T11:01:32Z"
+message: waiting for pod kube-crpd-worker-sts-1 to be scheduled
+metadata:
+  creationTimestamp: "2024-01-20T23:56:28Z"
+  name: conf-kube-crpd-worker-sts-1.17ac338105e71aab
+  namespace: jcnr
+  uid: cf045cb8-3807-4b26-a50b-85152ebbe0a6
+reason: WaitForPodScheduled
+reportingComponent: persistentvolume-controller
+reportingInstance: ""
+source:
+  component: persistentvolume-controller
 type: Normal

@@ -1,25 +1,25 @@
 action: Scheduling
-apiVersion: events.k8s.io/v1
-deprecatedFirstTimestamp: null
-deprecatedLastTimestamp: null
-deprecatedSource: {}
+apiVersion: v1
 eventTime: "2024-01-30T10:20:09.255692Z"
-kind: Event
-metadata:
-  creationTimestamp: "2024-01-30T10:20:09Z"
-  name: gitea-7c6954fdcd-6lj4s.17af18c2ebcfd814
-  namespace: default
-  uid: 16f7ce31-493f-4f05-ab40-fe99653cf336
-note: '0/2 nodes are available: pod has unbound immediate PersistentVolumeClaims.
-  preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling..'
-reason: FailedScheduling
-regarding:
+firstTimestamp: null
+involvedObject:
   apiVersion: v1
   kind: Pod
   name: gitea-7c6954fdcd-6lj4s
   namespace: default
   resourceVersion: "4323603"
   uid: 5e95cecf-27fa-42bf-8d66-aa1e10c89b76
-reportingController: default-scheduler
+kind: Event
+lastTimestamp: null
+message: '0/2 nodes are available: pod has unbound immediate PersistentVolumeClaims.
+  preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling..'
+metadata:
+  creationTimestamp: "2024-01-30T10:20:09Z"
+  name: gitea-7c6954fdcd-6lj4s.17af18c2ebcfd814
+  namespace: default
+  uid: 16f7ce31-493f-4f05-ab40-fe99653cf336
+reason: FailedScheduling
+reportingComponent: default-scheduler
 reportingInstance: default-scheduler-sharmag-k8s-master-pnad30.englab.juniper.net
+source: {}
 type: Warning
