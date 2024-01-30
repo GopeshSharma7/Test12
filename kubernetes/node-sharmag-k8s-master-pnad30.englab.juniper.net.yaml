@@ -52,25 +52,25 @@ status:
     reason: CalicoIsUp
     status: "False"
     type: NetworkUnavailable
-  - lastHeartbeatTime: "2024-01-30T10:05:38Z"
+  - lastHeartbeatTime: "2024-01-30T10:10:45Z"
     lastTransitionTime: "2023-12-27T09:42:45Z"
     message: kubelet has sufficient memory available
     reason: KubeletHasSufficientMemory
     status: "False"
     type: MemoryPressure
-  - lastHeartbeatTime: "2024-01-30T10:05:38Z"
+  - lastHeartbeatTime: "2024-01-30T10:10:45Z"
     lastTransitionTime: "2023-12-27T09:42:45Z"
     message: kubelet has no disk pressure
     reason: KubeletHasNoDiskPressure
     status: "False"
     type: DiskPressure
-  - lastHeartbeatTime: "2024-01-30T10:05:38Z"
+  - lastHeartbeatTime: "2024-01-30T10:10:45Z"
     lastTransitionTime: "2023-12-27T09:42:45Z"
     message: kubelet has sufficient PID available
     reason: KubeletHasSufficientPID
     status: "False"
     type: PIDPressure
-  - lastHeartbeatTime: "2024-01-30T10:05:38Z"
+  - lastHeartbeatTime: "2024-01-30T10:10:45Z"
     lastTransitionTime: "2023-12-27T09:42:46Z"
     message: kubelet is posting ready status. AppArmor enabled
     reason: KubeletReady
