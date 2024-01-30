@@ -1,0 +1,140 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: 6d849153eb4fbe47882f83b930858f187c171fd09c622b375b6ce1308603c1ab
+    cni.projectcalico.org/podIP: 10.244.35.153/32
+    cni.projectcalico.org/podIPs: 10.244.35.153/32
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "k8s-pod-network",
+          "ips": [
+              "10.244.35.153"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "k8s-pod-network",
+          "ips": [
+              "10.244.35.153"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+  creationTimestamp: "2024-01-25T05:52:01Z"
+  generateName: gitea-7c6954fdcd-
+  labels:
+    app: gitea
+    pod-template-hash: 7c6954fdcd
+  name: gitea-7c6954fdcd-ftscd
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: gitea-7c6954fdcd
+    uid: 26597072-c919-47e9-9450-03b7f2967153
+  uid: bf6594de-c40b-4d72-b1f5-d48af978681f
+spec:
+  containers:
+  - image: svl-artifactory.juniper.net/atom-docker/cn2/trohit7/gitea/gitea:1.21.4-rootless
+    imagePullPolicy: IfNotPresent
+    name: gitea
+    ports:
+    - containerPort: 3000
+      name: gitea
+      protocol: TCP
+    - containerPort: 22
+      name: git-ssh
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /data
+      name: git-volume
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-nq4rl
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: git-volume
+    persistentVolumeClaim:
+      claimName: git-volume
+  - name: kube-api-access-nq4rl
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-25T05:52:15Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-25T05:52:19Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-25T05:52:19Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2024-01-25T05:52:15Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: cri-o://f18e6e532a5875a533489d1a1c5c3a294da0b1de96986a9418b36e7dd7ee7891
+    image: svl-artifactory.juniper.net/atom-docker/cn2/trohit7/gitea/gitea:1.21.4-rootless
+    imageID: b54bb0997f8c4c7a1bfc57640afe1b0c79065097e1e92889babcfaa6c18d6ae6
+    lastState: {}
+    name: gitea
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2024-01-25T05:52:18Z"
+  hostIP: 192.168.1.3
+  phase: Running
+  podIP: 10.244.35.153
+  podIPs:
+  - ip: 10.244.35.153
+  qosClass: BestEffort
+  startTime: "2024-01-25T05:52:15Z"

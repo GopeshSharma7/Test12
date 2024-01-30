@@ -18,23 +18,23 @@ spec:
   - null
   - null
   - null
+  - null
+  - null
   - 2
   - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
+  - null
   - 3
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
-  - null
+  - 4
   - null
   - null
   - null
@@ -84,21 +84,27 @@ spec:
       node: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
       pod: calico-kube-controllers-86f8947565-db7lp
       timestamp: 2023-12-27 09:46:41.455762656 +0000 UTC
-  - handle_id: k8s-pod-network.9d898d65e8fd325b91de92d7095ffb2f5177dcb367431d648222b37da89cca92
-    secondary:
-      namespace: default
-      node: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
-      pod: example-webhook-66f6b79986-kz685
-      timestamp: 2024-01-15 12:15:53.670018212 +0000 UTC
   - handle_id: k8s-pod-network.fa5fd50518186c335be52bf1b9e74e2ea3b5d31b3839d8dd67f04e9a242fcfae
     secondary:
       namespace: kube-system
       node: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
       pod: coredns-756994469c-pxnkd
       timestamp: 2024-01-15 18:12:06.570463574 +0000 UTC
+  - handle_id: k8s-pod-network.5607f9ed612cc8c5197fc81f049a6054aee3d46caeee0e140b87b13589f97fb3
+    secondary:
+      namespace: default
+      node: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+      pod: example-webhook-759d9786bf-824tf
+      timestamp: 2024-01-19 18:50:14.909928623 +0000 UTC
+  - handle_id: k8s-pod-network.6d849153eb4fbe47882f83b930858f187c171fd09c622b375b6ce1308603c1ab
+    secondary:
+      namespace: default
+      node: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+      pod: gitea-7c6954fdcd-ftscd
+      timestamp: 2024-01-25 05:52:16.220782487 +0000 UTC
   cidr: 10.244.35.128/26
   deleted: false
-  sequenceNumber: 1703670390757791005
+  sequenceNumber: 1703670390757791032
   sequenceNumberForAllocation:
     "0": 1703670390757790985
     "1": 1703670390757790986
@@ -112,22 +118,22 @@ spec:
     "9": 1703670390757791001
     "10": 1703670390757791002
     "11": 1703670390757791003
+    "12": 1703670390757791006
+    "13": 1703670390757791008
+    "14": 1703670390757791009
+    "15": 1703670390757791012
+    "16": 1703670390757791014
+    "17": 1703670390757791015
+    "18": 1703670390757791018
+    "19": 1703670390757791020
+    "20": 1703670390757791022
+    "21": 1703670390757791024
+    "22": 1703670390757791026
+    "23": 1703670390757791028
+    "24": 1703670390757791030
+    "25": 1703670390757791031
   strictAffinity: false
   unallocated:
-  - 12
-  - 13
-  - 14
-  - 15
-  - 16
-  - 17
-  - 18
-  - 19
-  - 20
-  - 21
-  - 22
-  - 23
-  - 24
-  - 25
   - 26
   - 27
   - 28
@@ -174,3 +180,16 @@ spec:
   - 7
   - 8
   - 10
+  - 9
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23

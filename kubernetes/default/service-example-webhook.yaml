@@ -4,14 +4,14 @@ metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"example-webhook","namespace":"default"},"spec":{"ports":[{"name":"application","port":443,"targetPort":8443},{"name":"metrics","port":80,"targetPort":"metrics"}],"selector":{"app":"example-webhook"}}}
-  creationTimestamp: "2024-01-15T12:15:53Z"
+  creationTimestamp: "2024-01-19T18:50:14Z"
   name: example-webhook
   namespace: default
-  uid: 96a0567a-0110-4a86-b1ce-7ee34e439b66
+  uid: 9f102a37-e6f3-43e9-a893-6b8bac701aea
 spec:
-  clusterIP: 10.10.10.150
+  clusterIP: 10.10.10.117
   clusterIPs:
-  - 10.10.10.150
+  - 10.10.10.117
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4

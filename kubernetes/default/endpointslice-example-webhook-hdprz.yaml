@@ -1,0 +1,41 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 10.244.35.152
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: sharmag-k8s-dpdk-kubelet1-pnad30.englab.juniper.net
+  targetRef:
+    kind: Pod
+    name: example-webhook-759d9786bf-824tf
+    namespace: default
+    uid: 7c55a636-9bd9-4652-9af8-65dcc95dbb5a
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2024-01-19T18:50:16Z"
+  creationTimestamp: "2024-01-19T18:50:14Z"
+  generateName: example-webhook-
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kubernetes.io/service-name: example-webhook
+  name: example-webhook-hdprz
+  namespace: default
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: example-webhook
+    uid: 9f102a37-e6f3-43e9-a893-6b8bac701aea
+  uid: e7019d60-bd15-447a-817d-88159d8dd8e8
+ports:
+- name: metrics
+  port: 80
+  protocol: TCP
+- name: application
+  port: 8443
+  protocol: TCP
